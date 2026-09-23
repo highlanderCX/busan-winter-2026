@@ -7,22 +7,22 @@
 <meta name="description" content="Family winter itinerary for Busan, Korea — 18–23 December 2026.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 /* ============ TOKENS ============ */
 :root{
-  --sea:      #093753;   /* deep winter teal — the cold sea */
-  --sea-deep: #062739;   /* darker sea for layered sections */
-  --ink:      #041C29;   /* near-black teal */
-  --cream:    #F5F4EB;   /* paper cream */
+  --sea:      #093753;
+  --sea-deep: #062739;
+  --ink:      #041C29;
+  --cream:    #F5F4EB;
   --cream-60: rgba(245,244,235,.6);
   --cream-35: rgba(245,244,235,.35);
-  --gold:     #DFA54F;   /* lantern gold */
-  --cyan:     #5CE1E6;   /* winter-sky cyan */
-  --rose:     #FF6B9D;   /* food / foodie accent */
+  --gold:     #DFA54F;
+  --cyan:     #5CE1E6;
+  --rose:     #FF6B9D;
   --line:     rgba(245,244,235,.14);
-  --disp: 'Oswald', 'Arial Narrow', sans-serif;
-  --mono: 'Space Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --disp: 'Oswald','Noto Sans SC','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  --mono: 'Space Mono','Noto Sans SC','PingFang SC','Microsoft YaHei',ui-monospace,monospace;
   --pad: clamp(20px, 5vw, 64px);
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -37,13 +37,28 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 ::selection{background:var(--gold);color:var(--ink)}
-/* film grain */
 body::after{
   content:"";position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.05;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
 }
 img,svg{display:block}
 a{color:inherit}
+
+/* ============ LANGUAGE SWITCH ============ */
+.langbar{
+  position:fixed;top:calc(env(safe-area-inset-top) + 14px);right:14px;z-index:70;
+  display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;
+  background:rgba(4,28,41,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+}
+.langbar button{
+  appearance:none;border:none;background:none;cursor:pointer;color:var(--cream-35);
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;padding:9px 13px;
+  transition:color .3s,background .3s;-webkit-tap-highlight-color:transparent;
+}
+.langbar button+button{border-left:1px solid var(--line)}
+.langbar button.on{color:var(--ink);background:var(--gold);font-weight:700}
+.langbar button:not(.on):hover{color:var(--cream)}
+html[lang="zh"] body{font-family:'Noto Sans SC','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif}
 
 /* ============ HERO ============ */
 .hero{
@@ -59,7 +74,7 @@ a{color:inherit}
   color:var(--gold);margin-bottom:18px;
 }
 .hero-title{
-  font-family:var(--disp);font-weight:700;text-transform:uppercase;
+  font-weight:700;text-transform:uppercase;
   font-size:clamp(64px,17vw,220px);line-height:.86;letter-spacing:-.01em;
 }
 .hero-title .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
@@ -69,7 +84,6 @@ a{color:inherit}
   font-family:var(--mono);font-size:12px;color:var(--cream-60);letter-spacing:.08em;
 }
 .hero-meta b{color:var(--cream);font-weight:700}
-/* breathing circle — 6 DAYS */
 .orbit{
   position:relative;z-index:2;width:clamp(110px,26vw,168px);height:clamp(110px,26vw,168px);
   border:2px solid var(--gold);border-radius:50%;
@@ -77,7 +91,7 @@ a{color:inherit}
   animation:breathe 5s ease-in-out infinite;
   margin:34px 0 0 auto;
 }
-.orbit .n{font-family:var(--disp);font-weight:700;font-size:clamp(40px,9vw,64px);line-height:1;color:var(--gold)}
+.orbit .n{font-weight:700;font-size:clamp(40px,9vw,64px);line-height:1;color:var(--gold)}
 .orbit .t{font-family:var(--mono);font-size:10px;letter-spacing:.4em;color:var(--cream-60);padding-left:.4em}
 @keyframes breathe{
   0%,100%{border-color:var(--gold);box-shadow:0 0 0 0 rgba(223,165,79,.25)}
@@ -94,7 +108,7 @@ a{color:inherit}
 }
 .scroll-cue::after{content:"";width:56px;height:1px;background:var(--cream-35)}
 
-/* ============ SECTIONS ============ */
+/* ============ SHARED ============ */
 .wrap{max-width:720px;margin:0 auto;padding:0 var(--pad)}
 .sec-label{
   font-family:var(--mono);font-size:11px;letter-spacing:.35em;text-transform:uppercase;
@@ -105,14 +119,13 @@ a{color:inherit}
   font-weight:600;text-transform:uppercase;font-size:clamp(28px,7vw,44px);
   line-height:1.02;letter-spacing:-.01em;margin-bottom:12px;
 }
+html[lang="zh"] .sec-title{letter-spacing:.04em}
 
-/* ============ DAY SECTIONS ============ */
+/* ============ DAYS ============ */
 .day{padding:64px 0 24px;position:relative}
 .day:nth-of-type(even){background:var(--sea-deep)}
 .day-head{margin-bottom:8px}
-.day-id{
-  display:flex;align-items:center;gap:16px;margin-bottom:16px;
-}
+.day-id{display:flex;align-items:center;gap:16px;margin-bottom:16px}
 .day-chip{
   width:72px;height:72px;min-width:72px;border:2px solid var(--gold);border-radius:50%;
   display:flex;align-items:center;justify-content:center;
@@ -121,15 +134,15 @@ a{color:inherit}
 .day-idtext{display:flex;flex-direction:column;gap:2px}
 .day-idtext .dnum{font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:var(--cream-35);text-transform:uppercase}
 .day-idtext .ddate{font-family:var(--mono);font-size:13px;letter-spacing:.12em;color:var(--gold);font-weight:700}
-.day-name{font-size:clamp(26px,6.5vw,40px);font-weight:600;text-transform:uppercase;line-height:1.04;letter-spacing:-.01em}
-.day-sub{font-size:14px;color:var(--cream-60);margin-top:8px;max-width:46ch;line-height:1.55}
+.day-name{font-size:clamp(26px,6.5vw,40px);font-weight:600;text-transform:uppercase;line-height:1.1;letter-spacing:-.01em}
+html[lang="zh"] .day-name{letter-spacing:.03em}
+.day-sub{font-size:14px;color:var(--cream-60);margin-top:8px;max-width:48ch;line-height:1.55}
 .day-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
-
-/* tag chips */
 .tag{
   font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;
   padding:4px 9px;border:1px solid var(--line);color:var(--cream-60);white-space:nowrap;
 }
+html[lang="zh"] .tag{letter-spacing:.08em;font-size:10px}
 .tag.kid{color:var(--cyan);border-color:rgba(92,225,230,.45)}
 .tag.mums{color:var(--gold);border-color:rgba(223,165,79,.5)}
 .tag.food{color:var(--rose);border-color:rgba(255,107,157,.45)}
@@ -152,23 +165,22 @@ a{color:inherit}
   display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:6px 14px;
   padding:16px 2px;cursor:pointer;-webkit-tap-highlight-color:transparent;
 }
-.slot-time{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--gold);grid-column:1/-1;display:flex;gap:10px;align-items:baseline}
+.slot-time{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--gold);grid-column:1/-1;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
 .slot-time .dur{color:var(--cream-35)}
 .slot-name{font-weight:500;font-size:clamp(16px,4.4vw,19px);text-transform:uppercase;letter-spacing:.01em;line-height:1.2}
+html[lang="zh"] .slot-name{letter-spacing:.03em;text-transform:none}
 .slot-kr{font-family:var(--mono);font-size:10.5px;color:var(--cream-35);letter-spacing:.05em;margin-top:3px;text-transform:none}
 .slot-x{
   width:30px;height:30px;min-width:30px;border:1px solid var(--line);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;align-self:center;
+  display:flex;align-items:center;justify-content:center;align-self:center;position:relative;
   transition:transform .35s cubic-bezier(.4,0,.2,1),border-color .35s;
 }
-.slot-x::before,.slot-x::after{content:"";position:absolute;background:var(--cream);transition:transform .35s}
+.slot-x::before,.slot-x::after{content:"";position:absolute;background:var(--cream);transition:transform .35s,opacity .35s}
 .slot-x::before{width:12px;height:1.5px}
 .slot-x::after{width:1.5px;height:12px}
 .slot.open .slot-x{border-color:var(--gold)}
 .slot.open .slot-x::after{transform:rotate(90deg);opacity:0}
-.slot-body{
-  overflow:hidden;max-height:0;transition:max-height .45s cubic-bezier(.4,0,.2,1);
-}
+.slot-body{overflow:hidden;max-height:0;transition:max-height .45s cubic-bezier(.4,0,.2,1)}
 .slot-body-in{padding:2px 2px 20px;font-size:13.5px;line-height:1.65;color:var(--cream-60)}
 .slot-body-in p+p{margin-top:8px}
 .slot-body-in .lbl{
@@ -181,7 +193,7 @@ a{color:inherit}
 .slot-body-in a{color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(92,225,230,.4)}
 .slot-body-in .note{font-family:var(--mono);font-size:11px;color:var(--cream-35);margin-top:12px;letter-spacing:.02em}
 
-/* ============ DAY RAIL (fixed bottom nav) ============ */
+/* ============ DAY RAIL ============ */
 .rail{
   position:fixed;left:0;right:0;bottom:0;z-index:50;
   display:flex;justify-content:center;gap:2px;
@@ -196,50 +208,33 @@ a{color:inherit}
 }
 .rail a small{display:block;font-size:8px;letter-spacing:.22em}
 .rail a.active{color:var(--gold)}
-.rail a.active::after{
-  content:"";position:absolute;left:13px;right:13px;bottom:2px;height:2px;background:var(--gold);
-}
+.rail a.active::after{content:"";position:absolute;left:13px;right:13px;bottom:2px;height:2px;background:var(--gold)}
 @media(min-width:640px){ .rail a{padding:8px 20px} }
 
 /* ============ ESSENTIALS ============ */
 .essentials{padding:72px 0 90px;background:var(--ink)}
 .ess-grid{display:grid;grid-template-columns:1fr;border-top:1px solid var(--line)}
 .ess{padding:20px 2px;border-bottom:1px solid var(--line)}
-.ess h3{
-  font-weight:600;text-transform:uppercase;font-size:15px;letter-spacing:.04em;
-  display:flex;align-items:baseline;gap:10px;
-}
+.ess h3{font-weight:600;text-transform:uppercase;font-size:15px;letter-spacing:.04em;display:flex;align-items:baseline;gap:10px}
+html[lang="zh"] .ess h3{text-transform:none}
 .ess h3 span{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:.2em}
 .ess p{font-size:13px;color:var(--cream-60);line-height:1.6;margin-top:6px}
 .ess p b{color:var(--cream);font-weight:500}
 @media(min-width:640px){ .ess-grid{grid-template-columns:1fr 1fr;column-gap:40px} }
-
-/* booking checklist */
 .check{list-style:none;margin-top:20px;border-top:1px solid var(--line)}
-.check li{
-  display:flex;gap:14px;align-items:baseline;padding:13px 2px;border-bottom:1px solid var(--line);
-  font-size:13.5px;color:var(--cream-60);
-}
-.check .box{
-  min-width:15px;height:15px;border:1.5px solid var(--gold);margin-top:2px;align-self:flex-start;
-}
+.check li{display:flex;gap:14px;align-items:baseline;padding:13px 2px;border-bottom:1px solid var(--line);font-size:13.5px;color:var(--cream-60)}
+.check .box{min-width:15px;height:15px;border:1.5px solid var(--gold);margin-top:2px;align-self:flex-start}
 .check b{color:var(--cream);font-weight:500}
 .check .mono{font-family:var(--mono);font-size:10.5px;color:var(--gold);letter-spacing:.1em}
 
 /* ============ FOOTER ============ */
-footer{
-  padding:44px var(--pad) calc(120px + env(safe-area-inset-bottom));
-  background:var(--ink);text-align:center;
-}
-footer .big{
-  font-weight:700;text-transform:uppercase;font-size:clamp(34px,10vw,72px);
-  line-height:.9;color:transparent;-webkit-text-stroke:1px var(--cream-35);
-}
+footer{padding:44px var(--pad) calc(120px + env(safe-area-inset-bottom));background:var(--ink);text-align:center}
+footer .big{font-weight:700;text-transform:uppercase;font-size:clamp(34px,10vw,72px);line-height:.9;color:transparent;-webkit-text-stroke:1px var(--cream-35)}
 footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--cream-35);margin-top:18px;text-transform:uppercase}
 
-/* intro strip between hero and day 1 */
+/* ============ INTRO ============ */
 .intro{padding:56px 0 12px}
-.intro p.lede{font-size:clamp(17px,4.6vw,21px);line-height:1.5;font-weight:400;color:var(--cream);max-width:34ch}
+.intro p.lede{font-size:clamp(17px,4.6vw,21px);line-height:1.5;max-width:36ch}
 .intro p.lede em{font-style:normal;color:var(--gold)}
 .intro .facts{display:flex;flex-wrap:wrap;gap:10px 30px;margin-top:22px;font-family:var(--mono);font-size:11.5px;color:var(--cream-60);letter-spacing:.06em}
 .intro .facts b{color:var(--cream)}
@@ -247,19 +242,22 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
 </head>
 <body>
 
+<div class="langbar" role="group" aria-label="Language">
+  <button data-lang="en" class="on">EN</button>
+  <button data-lang="fr">FR</button>
+  <button data-lang="zh">中文</button>
+</div>
+
 <!-- ================= HERO ================= -->
 <header class="hero" id="top">
   <svg class="hero-sky" viewBox="0 0 400 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-    <!-- winter stars -->
     <g fill="#F5F4EB" opacity=".5">
       <circle cx="40" cy="40" r="1.1"/><circle cx="120" cy="70" r=".8"/><circle cx="200" cy="30" r="1.2"/>
       <circle cx="280" cy="60" r=".8"/><circle cx="350" cy="42" r="1.1"/><circle cx="90" cy="110" r=".7"/>
       <circle cx="320" cy="120" r=".9"/><circle cx="160" cy="95" r=".7"/>
     </g>
-    <!-- sea line -->
     <rect x="0" y="252" width="400" height="48" fill="#062739"/>
     <line x1="0" y1="252" x2="400" y2="252" stroke="#DFA54F" stroke-width="1" opacity=".7"/>
-    <!-- Gwangan Bridge -->
     <g stroke="#DFA54F" stroke-width="1.4" fill="none" opacity=".9">
       <line x1="30" y1="252" x2="30" y2="150"/>
       <line x1="70" y1="252" x2="70" y2="150"/>
@@ -269,7 +267,6 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
       <line x1="48" y1="150" x2="48" y2="196"/><line x1="56" y1="150" x2="56" y2="196"/>
       <path d="M100 210 Q 250 120 400 208" stroke-dasharray="1 6" opacity=".55"/>
     </g>
-    <!-- bridge lights -->
     <g fill="#5CE1E6">
       <circle cx="0" cy="210" r="1.6"/><circle cx="50" cy="169" r="1.6"/><circle cx="100" cy="210" r="1.6"/>
       <circle cx="150" cy="185" r="1.6"/><circle cx="200" cy="168" r="1.6"/><circle cx="250" cy="159" r="1.6"/>
@@ -278,33 +275,33 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
   </svg>
 
   <div class="hero-inner">
-    <p class="hero-kicker">A family winter field guide</p>
+    <p class="hero-kicker" data-i18n="h.kicker">A family winter field guide</p>
     <h1 class="hero-title">
-      <span class="row"><span>BUSAN</span></span>
-      <span class="row"><span>WINTER</span><span style="font-size:.32em">2026</span></span>
+      <span class="row"><span data-i18n="h.t1">BUSAN</span></span>
+      <span class="row"><span class="r2" data-i18n="h.t2">WINTER</span><span style="font-size:.32em">2026</span></span>
     </h1>
     <div class="hero-meta">
-      <span><b>18 → 23 DEC</b> · 6 DAYS</span>
-      <span><b>4 TRAVELLERS</b></span>
-      <span>MUM · DAD · KID · <b>MUM'S FRIEND</b></span>
+      <span data-i18n="h.m1"><b>18 → 23 DEC</b> · 6 DAYS</span>
+      <span data-i18n="h.m2"><b>4 TRAVELLERS</b></span>
+      <span data-i18n="h.m3">MUM · DAD · KID · <b>MUM'S FRIEND</b></span>
     </div>
     <div class="orbit" aria-hidden="true">
       <span class="n">6</span>
-      <span class="t">DAYS</span>
+      <span class="t" data-i18n="h.orb">DAYS</span>
     </div>
-    <p class="scroll-cue">Scroll the plan</p>
+    <p class="scroll-cue" data-i18n="h.cue">Scroll the plan</p>
   </div>
 </header>
 
 <!-- ================= INTRO ================= -->
 <div class="intro wrap">
-  <p class="sec-label">The plan</p>
-  <p class="lede">Six winter days on Korea's southern coast — temples over the sea, night markets, the biggest spa in the country, and a <em>very good</em> excuse to eat crab.</p>
+  <p class="sec-label" data-i18n="i.label">The plan</p>
+  <p class="lede" data-i18n="i.lede">Six winter days on Korea's southern coast — temples over the sea, night markets, the biggest spa in the country, and a <em>very good</em> excuse to eat crab.</p>
   <div class="facts">
-    <span>BASE <b>Haeundae</b></span>
-    <span>WINTER <b>2–9°C</b></span>
-    <span>SUNSET <b>~17:15</b></span>
-    <span>PACE <b>Family-sane</b></span>
+    <span data-i18n="i.f1">BASE <b>Haeundae</b></span>
+    <span data-i18n="i.f2">WINTER <b>2–9°C</b></span>
+    <span data-i18n="i.f3">SUNSET <b>~17:15</b></span>
+    <span data-i18n="i.f4">PACE <b>Family-sane</b></span>
   </div>
 </div>
 
@@ -315,13 +312,13 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
       <div class="day-id">
         <div class="day-chip">01</div>
         <div class="day-idtext">
-          <span class="dnum">Day one</span>
-          <span class="ddate">FRI · 18 DEC</span>
+          <span class="dnum" data-i18n="d1.num">Day one</span>
+          <span class="ddate" data-i18n="d1.date">FRI · 18 DEC</span>
         </div>
       </div>
-      <h2 class="day-name">Land soft, first sea air</h2>
-      <p class="day-sub">Arrive Gimhae, cross the city to Haeundae, and let the beach do the jet-lag recovery. Early night — the big days are ahead.</p>
-      <div class="day-tags"><span class="tag kid">Kid-friendly</span><span class="tag food">Seafood dinner</span><span class="tag">Light day</span></div>
+      <h2 class="day-name" data-i18n="d1.name">Land soft, first sea air</h2>
+      <p class="day-sub" data-i18n="d1.sub">Arrive Gimhae, cross the city to Haeundae, and let the beach do the jet-lag recovery. Early night — the big days are ahead.</p>
+      <div class="day-tags" data-i18n="d1.tags"><span class="tag kid">Kid-friendly</span><span class="tag food">Seafood dinner</span><span class="tag">Light day</span></div>
     </div>
     <div class="tl">
       <svg class="tl-svg" aria-hidden="true"><path d="M2 0 V 1000"/></svg>
@@ -329,11 +326,11 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
       <ol class="slots">
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">09:40 – 14:30 <span class="dur">· flight + arrival</span></span>
-            <span class="slot-name">Fly into Gimhae (PUS)</span>
+            <span class="slot-time">09:40 – 14:30 <span class="dur" data-i18n="d1.s1.dur">· flight + arrival</span></span>
+            <span class="slot-name" data-i18n="d1.s1.name">Fly into Gimhae (PUS)</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d1.s1.body">
             <p>Morning departure lands you at Busan's Gimhae airport around midday. Grab T-money cards and a prepaid SIM or eSIM at the arrivals hall before leaving.</p>
             <span class="lbl">At the airport</span>
             <ul>
@@ -346,12 +343,12 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
         </li>
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">15:00 – 16:30 <span class="dur">· ~70 min transit</span></span>
-            <span class="slot-name">Airport → Haeundae</span>
+            <span class="slot-time">15:00 – 16:30 <span class="dur" data-i18n="d1.s2.dur">· ~70 min transit</span></span>
+            <span class="slot-name" data-i18n="d1.s2.name">Airport → Haeundae</span>
             <span class="slot-kr">김해경전철 → 사상 → 지하철 2호선 해운대</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d1.s2.body">
             <p>Two ways across town — the scenic-cheap way and the tired-family way:</p>
             <ul>
               <li><b>Metro (₩1,700/pp):</b> Gimhae Light Rail to Sasang, change to Line 2 (green), ride to Haeundae. ~70 min with one easy transfer. Lifts at all stations.</li>
@@ -362,11 +359,11 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
         </li>
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">16:30 – 17:45 <span class="dur">· check in + reset</span></span>
-            <span class="slot-name">Check in &amp; decompress</span>
+            <span class="slot-time">16:30 – 17:45 <span class="dur" data-i18n="d1.s3.dur">· check in + reset</span></span>
+            <span class="slot-name" data-i18n="d1.s3.name">Check in &amp; decompress</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d1.s3.body">
             <p>Base for all six nights: a family room in <b>Haeundae</b> — walkable to the beach, Line 2 at the door, and close to the metro for every day trip in this plan.</p>
             <ul>
               <li>Unpack once. Laundry, kettle, extra blankets — you know the drill.</li>
@@ -376,12 +373,12 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
         </li>
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">17:45 – 19:00 <span class="dur">· ~75 min walk</span></span>
-            <span class="slot-name">Haeundae beach &amp; Dongbaek island</span>
+            <span class="slot-time">17:45 – 19:00 <span class="dur" data-i18n="d1.s4.dur">· ~75 min walk</span></span>
+            <span class="slot-name" data-i18n="d1.s4.name">Haeundae beach &amp; Dongbaek island</span>
             <span class="slot-kr">해운대해수욕장 · 동백섬</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d1.s4.body">
             <p>Winter sunset lands ~17:15 — go anyway. The empty beach, the bronze statue of the mermaid, and the lights coming on over the East Sea is the perfect arrival scene, and it's 5 minutes from anywhere in Haeundae.</p>
             <ul>
               <li>Loop the <b>Dongbaekseom boardwalk</b> (flat, 20 min, kid-easy) past Nurimaru APEC House.</li>
@@ -392,12 +389,12 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
         </li>
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">19:00 – 21:00 <span class="dur">· dinner</span></span>
-            <span class="slot-name">First seafood night</span>
+            <span class="slot-time">19:00 – 21:00 <span class="dur" data-i18n="d1.s5.dur">· dinner</span></span>
+            <span class="slot-name" data-i18n="d1.s5.name">First seafood night</span>
             <span class="slot-kr">해운대 초장집 거리 / 민락어민활어직판장</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d1.s5.body">
             <p>Two solid first-night options, both a short stroll from the beach:</p>
             <ul>
               <li><b>Millak raw fish market (민락회타운):</b> pick a live fish downstairs, they slice it upstairs. Hoe + maeuntang (spicy fish stew) for the table. ~₩30–40k pp.</li>
@@ -419,13 +416,13 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
       <div class="day-id">
         <div class="day-chip">02</div>
         <div class="day-idtext">
-          <span class="dnum">Day two</span>
-          <span class="ddate">SAT · 19 DEC</span>
+          <span class="dnum" data-i18n="d2.num">Day two</span>
+          <span class="ddate" data-i18n="d2.date">SAT · 19 DEC</span>
         </div>
       </div>
-      <h2 class="day-name">Village of color, market of fish, bridge of light</h2>
-      <p class="day-sub">The classic south-Busan loop: Gamcheon's painted alleys, the old-town markets, then the Gwangalli drone show after dark. Big day — start early.</p>
-      <div class="day-tags"><span class="tag kid">Stamp tour</span><span class="tag food">Street food crawl</span><span class="tag">Free evening show</span></div>
+      <h2 class="day-name" data-i18n="d2.name">Village of color, market of fish, bridge of light</h2>
+      <p class="day-sub" data-i18n="d2.sub">The classic south-Busan loop: Gamcheon's painted alleys, the old-town markets, then the Gwangalli drone show after dark. Big day — start early.</p>
+      <div class="day-tags" data-i18n="d2.tags"><span class="tag kid">Stamp tour</span><span class="tag food">Street food crawl</span><span class="tag">Free evening show</span></div>
     </div>
     <div class="tl">
       <svg class="tl-svg" aria-hidden="true"><path d="M2 0 V 1000"/></svg>
@@ -433,12 +430,12 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
       <ol class="slots">
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">08:30 – 11:30 <span class="dur">· ~3 hrs</span></span>
-            <span class="slot-name">Gamcheon Culture Village</span>
+            <span class="slot-time">08:30 – 11:30 <span class="dur" data-i18n="d2.s1.dur">· ~3 hrs</span></span>
+            <span class="slot-name" data-i18n="d2.s1.name">Gamcheon Culture Village</span>
             <span class="slot-kr">감천문화마을</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d2.s1.body">
             <p>Busan's postcard: a hillside of houses painted every color, stacked above the sea. <b>Go before 10:00</b> — by late morning it's wall-to-wall tour groups.</p>
             <span class="lbl">With a kid</span>
             <ul>
@@ -449,18 +446,18 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
             <span class="lbl">Getting there</span>
             <ul>
               <li>Line 2 to Seomyeon → Line 1 to Toseong (토성) exit 6 → green village minibus 2-2 / 2 / 1-1 uphill (~15 min), or a ~₩6k taxi from the station.</li>
-            <li>Entry is free; optional map at the tourist info desk.</li>
+              <li>Entry is free; optional map at the tourist info desk.</li>
             </ul>
           </div></div>
         </li>
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">12:00 – 14:00 <span class="dur">· lunch + market wander</span></span>
-            <span class="slot-name">BIFF Square &amp; Gukje Market</span>
+            <span class="slot-time">12:00 – 14:00 <span class="dur" data-i18n="d2.s2.dur">· lunch + market wander</span></span>
+            <span class="slot-name" data-i18n="d2.s2.name">BIFF Square &amp; Gukje Market</span>
             <span class="slot-kr">비프광장 · 국제시장</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d2.s2.body">
             <p>Lunch is a walking buffet through Busan's old movie district — this is where Korean street food gets serious.</p>
             <ul>
               <li><b>BIFF square:</b> seed hotteok (syrupy, nutty — the original), tteokbokki, sundae, eomuk skewers. Share everything, ~₩8–12k all-in.</li>
@@ -472,12 +469,12 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
         </li>
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">14:00 – 15:30 <span class="dur">· 5 min walk</span></span>
-            <span class="slot-name">Jagalchi Fish Market</span>
+            <span class="slot-time">14:00 – 15:30 <span class="dur" data-i18n="d2.s3.dur">· 5 min walk</span></span>
+            <span class="slot-name" data-i18n="d2.s3.name">Jagalchi Fish Market</span>
             <span class="slot-kr">자갈치시장</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d2.s3.body">
             <p>Korea's largest seafood market, right on the port. Even if nobody buys anything, the ground floor — tanks of everything the East Sea produces — is an aquarium you walk through.</p>
             <ul>
               <li>Still peckish? Upstairs sashimi hall: point, they slice, you eat by the window over the harbor (~₩25k pp).</li>
@@ -488,11 +485,11 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
         </li>
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">15:45 – 17:45 <span class="dur">· rest window</span></span>
-            <span class="slot-name">Café pause &amp; hotel breather</span>
+            <span class="slot-time">15:45 – 17:45 <span class="dur" data-i18n="d2.s4.dur">· rest window</span></span>
+            <span class="slot-name" data-i18n="d2.s4.name">Café pause &amp; hotel breather</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d2.s4.body">
             <p>Two big markets in one afternoon is a lot with a kid. Options:</p>
             <ul>
               <li>Hot chocolate at a Nampo-dong café (the alley cafés behind the theater are excellent).</li>
@@ -502,12 +499,12 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
         </li>
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">18:30 – 21:30 <span class="dur">· evening</span></span>
-            <span class="slot-name">Gwangalli beach &amp; drone light show</span>
+            <span class="slot-time">18:30 – 21:30 <span class="dur" data-i18n="d2.s5.dur">· evening</span></span>
+            <span class="slot-name" data-i18n="d2.s5.name">Gwangalli beach &amp; drone light show</span>
             <span class="slot-kr">광안리해수욕장 · M 드론라이트쇼</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d2.s5.body">
             <p>Dinner on the beach with the full span of <b>Gwangan Bridge</b> lit up over the water — then hundreds of drones draw shapes in the sky above it. It's free, it's on Saturdays, and it's the single best evening in Busan.</p>
             <ul>
               <li>Line 2 to Geumnyeonsan (금련산) exit 1, or Gwangan (광안) exit 3 → 8-min walk to the sand.</li>
@@ -529,13 +526,13 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
       <div class="day-id">
         <div class="day-chip">03</div>
         <div class="day-idtext">
-          <span class="dnum">Day three</span>
-          <span class="ddate">SUN · 20 DEC</span>
+          <span class="dnum" data-i18n="d3.num">Day three</span>
+          <span class="ddate" data-i18n="d3.date">SUN · 20 DEC</span>
         </div>
       </div>
-      <h2 class="day-name">Temple on the sea, crab for lunch, spa till dark</h2>
-      <p class="day-sub">Busan's only seaside temple in the morning, winter crab at the source, then four floors of hot baths at the country's biggest spa. The mums' favorite day.</p>
-      <div class="day-tags"><span class="tag mums">Spa afternoon</span><span class="tag food">Winter crab</span><span class="tag kid">Spa kids' zone</span></div>
+      <h2 class="day-name" data-i18n="d3.name">Temple on the sea, crab for lunch, spa till dark</h2>
+      <p class="day-sub" data-i18n="d3.sub">Busan's only seaside temple in the morning, winter crab at the source, then four floors of hot baths at the country's biggest spa. The mums' favorite day.</p>
+      <div class="day-tags" data-i18n="d3.tags"><span class="tag mums">Spa afternoon</span><span class="tag food">Winter crab</span><span class="tag kid">Spa kids' zone</span></div>
     </div>
     <div class="tl">
       <svg class="tl-svg" aria-hidden="true"><path d="M2 0 V 1000"/></svg>
@@ -543,12 +540,12 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
       <ol class="slots">
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">08:30 – 11:00 <span class="dur">· ~2.5 hrs</span></span>
-            <span class="slot-name">Haedong Yonggungsa Temple</span>
+            <span class="slot-time">08:30 – 11:00 <span class="dur" data-i18n="d3.s1.dur">· ~2.5 hrs</span></span>
+            <span class="slot-name" data-i18n="d3.s1.name">Haedong Yonggungsa Temple</span>
             <span class="slot-kr">해동용궁사</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d3.s1.body">
             <p>Most Korean temples hide in mountains. This one spills down the rocks straight into the sea — prayer halls, a golden laughing Buddha, and a long stair of 108 steps beside the water.</p>
             <ul>
               <li>Line 2 to Haeundae exit 7 → bus 181 to Yonggungsa stop, then a 10-min downhill walk; taxi from Haeundae ~₩12k, 20 min.</li>
@@ -561,12 +558,12 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
         </li>
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">11:30 – 13:00 <span class="dur">· lunch</span></span>
-            <span class="slot-name">Gijang snow crab lunch</span>
+            <span class="slot-time">11:30 – 13:00 <span class="dur" data-i18n="d3.s2.dur">· lunch</span></span>
+            <span class="slot-name" data-i18n="d3.s2.name">Gijang snow crab lunch</span>
             <span class="slot-kr">기장 대게</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d3.s2.body">
             <p>December is deep <b>daegae</b> (snow crab) season, and the fishing town of Gijang — 15 minutes up the coast — is where Busanites go for it. Whole crab steamed at the table, legs snipped with scissors, roe fried rice to finish.</p>
             <ul>
               <li>The crab restaurant alleys sit near Jangseungpo / Gijang port — taxi ~₩15k from the temple, or Line 1 to Gijang station then short taxi.</li>
@@ -578,12 +575,12 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
         </li>
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">13:30 – 17:30 <span class="dur">· ~4 hrs</span></span>
-            <span class="slot-name">Shinsegae Centum City &amp; Spa Land</span>
+            <span class="slot-time">13:30 – 17:30 <span class="dur" data-i18n="d3.s3.dur">· ~4 hrs</span></span>
+            <span class="slot-name" data-i18n="d3.s3.name">Shinsegae Centum City &amp; Spa Land</span>
             <span class="slot-kr">신세계 센텀시티 · 스파랜드</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d3.s3.body">
             <p>The world's largest department store (a Guinness record, genuinely) with four floors of jjimjilbang underneath. This is the plan for the cold afternoon — everyone gets what they want.</p>
             <ul>
               <li><b>Spa Land (₩25–35k / 4 hrs):</b> 22 hot spring baths, 13 themed sauna rooms (salt room, clay ball room, ice room), nap zones, a snack bar. Book online — weekends sell out.</li>
@@ -596,11 +593,11 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
         </li>
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">18:00 – 20:00 <span class="dur">· dinner nearby</span></span>
-            <span class="slot-name">Easy dinner at Centum</span>
+            <span class="slot-time">18:00 – 20:00 <span class="dur" data-i18n="d3.s4.dur">· dinner nearby</span></span>
+            <span class="slot-name" data-i18n="d3.s4.name">Easy dinner at Centum</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d3.s4.body">
             <p>No need to travel again — eat where you are:</p>
             <ul>
               <li>Shinsegae food hall (B1) — Korean comfort stalls, quick and warm.</li>
@@ -621,13 +618,13 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
       <div class="day-id">
         <div class="day-chip">04</div>
         <div class="day-idtext">
-          <span class="dnum">Day four</span>
-          <span class="ddate">MON · 21 DEC</span>
+          <span class="dnum" data-i18n="d4.num">Day four</span>
+          <span class="ddate" data-i18n="d4.date">MON · 21 DEC</span>
         </div>
       </div>
-      <h2 class="day-name">Mountain temple, fortress wall, sky capsule</h2>
-      <p class="day-sub">Up into Busan's sacred mountain for a 1,300-year-old temple and winter views, then back down to the coast for the sky-train at sunset. Adventure day for the kid, fresh air for everyone.</p>
-      <div class="day-tags"><span class="tag kid">Sky capsule</span><span class="tag mums">Temple photo ops</span><span class="tag">Moderate walking</span></div>
+      <h2 class="day-name" data-i18n="d4.name">Mountain temple, fortress wall, sky capsule</h2>
+      <p class="day-sub" data-i18n="d4.sub">Up into Busan's sacred mountain for a 1,300-year-old temple and winter views, then back down to the coast for the sky-train at sunset. Adventure day for the kid, fresh air for everyone.</p>
+      <div class="day-tags" data-i18n="d4.tags"><span class="tag kid">Sky capsule</span><span class="tag mums">Temple photo ops</span><span class="tag">Moderate walking</span></div>
     </div>
     <div class="tl">
       <svg class="tl-svg" aria-hidden="true"><path d="M2 0 V 1000"/></svg>
@@ -635,12 +632,12 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
       <ol class="slots">
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">09:00 – 10:15 <span class="dur">· transit + approach</span></span>
-            <span class="slot-name">Up to Beomeosa</span>
+            <span class="slot-time">09:00 – 10:15 <span class="dur" data-i18n="d4.s1.dur">· transit + approach</span></span>
+            <span class="slot-name" data-i18n="d4.s1.name">Up to Beomeosa</span>
             <span class="slot-kr">범어사</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d4.s1.body">
             <p>Busan's great mountain temple, founded in 678 — stone gates, lantern-lined courtyards, and a valley where wild wisteria grows in spring. In December the last red maples can hang on at altitude.</p>
             <ul>
               <li>Line 1 to Beomeosa (범어사) exit 5 → free temple shuttle bus (runs frequently) or a 15-min uphill walk past the shops.</li>
@@ -650,12 +647,12 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
         </li>
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">10:15 – 12:00 <span class="dur">· ~1.75 hrs</span></span>
-            <span class="slot-name">Temple &amp; fortress gate</span>
+            <span class="slot-time">10:15 – 12:00 <span class="dur" data-i18n="d4.s2.dur">· ~1.75 hrs</span></span>
+            <span class="slot-name" data-i18n="d4.s2.name">Temple &amp; fortress gate</span>
             <span class="slot-kr">범어사 · 금정산성</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d4.s2.body">
             <p>Walk the temple grounds slowly: the One Pillar Gate, the three-story pagoda, the main hall where you can watch monks chant. Behind the temple, a forest trail climbs to <b>Geumjeongsanseong</b>, Korea's largest mountain fortress wall — even just to the first gate (North Gate, ~25 min uphill) is worth it.</p>
             <ul>
               <li>Kid fuel: the temple's own <b>temple-food café</b> does simple set lunches (reservations recommended on weekends).</li>
@@ -666,11 +663,11 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
         </li>
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">12:15 – 13:30 <span class="dur">· lunch</span></span>
-            <span class="slot-name">Mountain lunch</span>
+            <span class="slot-time">12:15 – 13:30 <span class="dur" data-i18n="d4.s3.dur">· lunch</span></span>
+            <span class="slot-name" data-i18n="d4.s3.name">Mountain lunch</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d4.s3.body">
             <p>Back down the hill for lunch in the Beomeosa restaurant strip — order the local temple-food set or a bubbling <b>baeksuk</b> (whole chicken soup) to shake off the mountain cold.</p>
             <ul>
               <li>Most places ~₩12–18k pp; the chicken soups serve 2–3 easily.</li>
@@ -680,12 +677,12 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
         </li>
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">15:00 – 17:15 <span class="dur">· book ahead</span></span>
-            <span class="slot-name">Haeundae Blueline Park — Sky Capsule</span>
+            <span class="slot-time">15:00 – 17:15 <span class="dur" data-i18n="d4.s4.dur">· book ahead</span></span>
+            <span class="slot-name" data-i18n="d4.s4.name">Haeundae Blueline Park — Sky Capsule</span>
             <span class="slot-kr">해운대 블루라인파크 · 스카이캡슐</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d4.s4.body">
             <p>The trip's kid-magnet: little pastel pods that crawl along a rail 7–10 m above the coastline, from Mipo to Cheongsapo — sea on one side, cliffs and cafés on the other. In winter, golden-hour departures catch the sunset over the water.</p>
             <ul>
               <li><b>Book online 1–2 weeks out</b> (bluelinepark.com or Klook) — December sunset slots sell out. ~₩35–50k per capsule (fits 4).</li>
@@ -697,12 +694,12 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
         </li>
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">18:30 – 20:00 <span class="dur">· dinner</span></span>
-            <span class="slot-name">Haeundae market street dinner</span>
+            <span class="slot-time">18:30 – 20:00 <span class="dur" data-i18n="d4.s5.dur">· dinner</span></span>
+            <span class="slot-name" data-i18n="d4.s5.name">Haeundae market street dinner</span>
             <span class="slot-kr">해운대전통시장</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d4.s5.body">
             <p>Easy, warm, and close to bed — the traditional market's food alley does the classics at local prices.</p>
             <ul>
               <li>Order: <b>dwaeji gukbap</b> (pork-and-rice soup — Busan's signature), shared jeon (savory pancake) if anyone's still hungry.</li>
@@ -722,13 +719,13 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
       <div class="day-id">
         <div class="day-chip">05</div>
         <div class="day-idtext">
-          <span class="dnum">Day five</span>
-          <span class="ddate">TUE · 22 DEC</span>
+          <span class="dnum" data-i18n="d5.num">Day five</span>
+          <span class="ddate" data-i18n="d5.date">TUE · 22 DEC</span>
         </div>
       </div>
-      <h2 class="day-name">All-in day at Lotte World, Christmas lights after</h2>
-      <p class="day-sub">An almost-fully-indoor theme park built for exactly this weather, then the Haeundae beach lights switch on for the season. The kid's day — and honestly, the adults' too.</p>
-      <div class="day-tags"><span class="tag kid">Theme park</span><span class="tag">Indoors = warm</span><span class="tag food">Night market</span></div>
+      <h2 class="day-name" data-i18n="d5.name">All-in day at Lotte World, Christmas lights after</h2>
+      <p class="day-sub" data-i18n="d5.sub">An almost-fully-indoor theme park built for exactly this weather, then the Haeundae beach lights switch on for the season. The kid's day — and honestly, the adults' too.</p>
+      <div class="day-tags" data-i18n="d5.tags"><span class="tag kid">Theme park</span><span class="tag">Indoors = warm</span><span class="tag food">Night market</span></div>
     </div>
     <div class="tl">
       <svg class="tl-svg" aria-hidden="true"><path d="M2 0 V 1000"/></svg>
@@ -736,22 +733,22 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
       <ol class="slots">
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">09:00 – 09:45 <span class="dur">· transit</span></span>
-            <span class="slot-name">Out to Osiria</span>
+            <span class="slot-time">09:00 – 09:45 <span class="dur" data-i18n="d5.s1.dur">· transit</span></span>
+            <span class="slot-name" data-i18n="d5.s1.name">Out to Osiria</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d5.s1.body">
             <p>Line 2 to Jangsan (장산) exit 6, then taxi ~10 min (₩8k) or free/paid shuttle to the park entrance. Leave a little early — you'll want to be at the gates for opening.</p>
           </div></div>
         </li>
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">10:00 – 17:00 <span class="dur">· full park day</span></span>
-            <span class="slot-name">Lotte World Adventure Busan</span>
+            <span class="slot-time">10:00 – 17:00 <span class="dur" data-i18n="d5.s2.dur">· full park day</span></span>
+            <span class="slot-name" data-i18n="d5.s2.name">Lotte World Adventure Busan</span>
             <span class="slot-kr">롯데월드 어드벤처 부산</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d5.s2.body">
             <p>Seoul's Lotte World little-sibling, purpose-built indoors — rides, parades, and a whole kids' zone under one giant roof. December means Christmas décor everywhere and near-zero weather risk.</p>
             <ul>
               <li><b>Tickets:</b> buy online (Klook / official site) before you fly — often 20–30% off gate price (~₩55–65k adult, kid discounts; check for family bundles).</li>
@@ -764,12 +761,12 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
         </li>
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">17:30 – 19:00 <span class="dur">· back at Haeundae</span></span>
-            <span class="slot-name">Haeundae Christmas lighting festival</span>
+            <span class="slot-time">17:30 – 19:00 <span class="dur" data-i18n="d5.s3.dur">· back at Haeundae</span></span>
+            <span class="slot-name" data-i18n="d5.s3.name">Haeundae Christmas lighting festival</span>
             <span class="slot-kr">해운대 빛축제</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d5.s3.body">
             <p>Every December the beach promenade becomes a tunnel of lights and installations — trees, a giant tree at the square, light art on the sand. It runs roughly early-December to late-January and switches on around dusk (~17:30).</p>
             <ul>
               <li>Free, walkable, and 5 minutes from the hotel — perfect low-energy evening.</li>
@@ -780,11 +777,11 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
         </li>
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">19:00 – 20:30 <span class="dur">· dinner</span></span>
-            <span class="slot-name">Last big dinner in Busan</span>
+            <span class="slot-time">19:00 – 20:30 <span class="dur" data-i18n="d5.s4.dur">· dinner</span></span>
+            <span class="slot-name" data-i18n="d5.s4.name">Last big dinner in Busan</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d5.s4.body">
             <p>Final-night choices, all within the Haeundae grid:</p>
             <ul>
               <li><b>Korean BBQ night:</b> hanwoo (Korean beef) grill — the celebratory order. ~₩35k pp with soju.</li>
@@ -805,13 +802,13 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
       <div class="day-id">
         <div class="day-chip">06</div>
         <div class="day-idtext">
-          <span class="dnum">Day six</span>
-          <span class="ddate">WED · 23 DEC</span>
+          <span class="dnum" data-i18n="d6.num">Day six</span>
+          <span class="ddate" data-i18n="d6.date">WED · 23 DEC</span>
         </div>
       </div>
-      <h2 class="day-name">Slow morning, last sea coffee, fly home</h2>
-      <p class="day-sub">No alarms. One last look at the water, souvenirs packed, and a clean run to the airport with time to spare.</p>
-      <div class="day-tags"><span class="tag">Departure day</span><span class="tag food">Souvenirs</span></div>
+      <h2 class="day-name" data-i18n="d6.name">Slow morning, last sea coffee, fly home</h2>
+      <p class="day-sub" data-i18n="d6.sub">No alarms. One last look at the water, souvenirs packed, and a clean run to the airport with time to spare.</p>
+      <div class="day-tags" data-i18n="d6.tags"><span class="tag">Departure day</span><span class="tag food">Souvenirs</span></div>
     </div>
     <div class="tl">
       <svg class="tl-svg" aria-hidden="true"><path d="M2 0 V 1000"/></svg>
@@ -819,26 +816,26 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
       <ol class="slots">
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">08:30 – 10:30 <span class="dur">· coffee + packing</span></span>
-            <span class="slot-name">Last sea view &amp; hotel checkout</span>
+            <span class="slot-time">08:30 – 10:30 <span class="dur" data-i18n="d6.s1.dur">· coffee + packing</span></span>
+            <span class="slot-name" data-i18n="d6.s1.name">Last sea view &amp; hotel checkout</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d6.s1.body">
             <p>Coffee at a beachfront café watching the morning joggers — the quiet version of the view you met on day one. Check out by late morning; most hotels store bags for free.</p>
           </div></div>
         </li>
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">10:30 – 12:00 <span class="dur">· souvenir run</span></span>
-            <span class="slot-name">What to bring home</span>
+            <span class="slot-time">10:30 – 12:00 <span class="dur" data-i18n="d6.s2.dur">· souvenir run</span></span>
+            <span class="slot-name" data-i18n="d6.s2.name">What to bring home</span>
             <span class="slot-kr">부산 삼각김밥 · 어묵 · 참기름</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d6.s2.body">
             <p>One efficient sweep, all near the hotel:</p>
             <ul>
               <li><b>Haeundae traditional market:</b> fresh eomuk (fish cakes — vacuum-packed for the flight), sesame oil, seaweed.</li>
-              <li><b>Convenience stores:</b> the famous triangle-kimbap making-of... actually just pack a few for the plane; honey butter almonds; cute socks (it will happen).</li>
+              <li><b>Convenience stores:</b> pack a few triangle kimbap for the plane; honey butter almonds; cute socks (it will happen).</li>
               <li><b>K-beauty top-ups</b> at the local Olive Young if the Centum City day wasn't enough.</li>
               <li>Keep liquids over 100 ml in checked luggage — fish-cake packs are fine either way.</li>
             </ul>
@@ -846,11 +843,11 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
         </li>
         <li class="slot">
           <button class="slot-head" aria-expanded="false">
-            <span class="slot-time">Flight – 3 hrs <span class="dur">· leave the hotel</span></span>
-            <span class="slot-name">To Gimhae airport &amp; out</span>
+            <span class="slot-time" data-i18n="d6.s3.time">Flight – 3 hrs</span>
+            <span class="slot-name" data-i18n="d6.s3.name">To Gimhae airport &amp; out</span>
             <span class="slot-x" aria-hidden="true"></span>
           </button>
-          <div class="slot-body"><div class="slot-body-in">
+          <div class="slot-body"><div class="slot-body-in" data-i18n="d6.s3.body">
             <ul>
               <li><b>Metro:</b> Haeundae → Sasang (~50 min) → Gimhae Light Rail to the airport (~15 min). Budget 90 min door-to-terminal with bags.</li>
               <li><b>Taxi:</b> ~40 min, ₩35–45k — the stress-free farewell with luggage and a kid.</li>
@@ -867,67 +864,363 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
 <!-- ================= ESSENTIALS ================= -->
 <section class="essentials" id="essentials">
   <div class="wrap">
-    <p class="sec-label">Field notes</p>
-    <h2 class="sec-title">Before you fly</h2>
+    <p class="sec-label" data-i18n="e.label">Field notes</p>
+    <h2 class="sec-title" data-i18n="e.title">Before you fly</h2>
     <div class="ess-grid">
       <div class="ess">
-        <h3><span>01</span>December weather</h3>
-        <p><b>2–9°C</b>, dry and windy on the coast. Sunset ~17:15, so outdoor plans cluster early. Pack down jackets, hats, gloves and a compact umbrella; pocket hand warmers (핫팩) are sold at every convenience store and Daiso for ~₩1,000.</p>
+        <h3 data-i18n="e1.h"><span>01</span>December weather</h3>
+        <p data-i18n="e1.p"><b>2–9°C</b>, dry and windy on the coast. Sunset ~17:15, so outdoor plans cluster early. Pack down jackets, hats, gloves and a compact umbrella; pocket hand warmers (핫팩) are sold at every convenience store and Daiso for ~₩1,000.</p>
       </div>
       <div class="ess">
-        <h3><span>02</span>Getting around</h3>
-        <p>Busan's metro covers this whole plan. <b>T-money</b> card (₩4,000 + top-up) taps metro, bus and taxi. Taxis start ~₩4,800 and are cheap across town. Use <b>Naver Map</b> or <b>KakaoMap</b> — Google Maps doesn't do Korean transit well.</p>
+        <h3 data-i18n="e2.h"><span>02</span>Getting around</h3>
+        <p data-i18n="e2.p">Busan's metro covers this whole plan. <b>T-money</b> card (₩4,000 + top-up) taps metro, bus and taxi. Taxis start ~₩4,800 and are cheap across town. Use <b>Naver Map</b> or <b>KakaoMap</b> — Google Maps doesn't do Korean transit well.</p>
       </div>
       <div class="ess">
-        <h3><span>03</span>Money &amp; cards</h3>
-        <p>Cards accepted almost everywhere; market stalls and small restaurants are cash-friendly. Global ATMs at convenience stores. Street food runs ₩2–8k, sit-down meals ₩12–25k pp, crab feast ₩30–40k pp.</p>
+        <h3 data-i18n="e3.h"><span>03</span>Money &amp; cards</h3>
+        <p data-i18n="e3.p">Cards accepted almost everywhere; market stalls and small restaurants are cash-friendly. Global ATMs at convenience stores. Street food runs ₩2–8k, sit-down meals ₩12–25k pp, crab feast ₩30–40k pp.</p>
       </div>
       <div class="ess">
-        <h3><span>04</span>Connectivity</h3>
-        <p>Prepaid tourist SIM or eSIM (~₩20k for 5 days, KT/SKT) — pick up at PUS arrivals or install an eSIM before departure. Hotel and café Wi-Fi is everywhere but you'll want data for maps on the go.</p>
+        <h3 data-i18n="e4.h"><span>04</span>Connectivity</h3>
+        <p data-i18n="e4.p">Prepaid tourist SIM or eSIM (~₩20k for 5 days, KT/SKT) — pick up at PUS arrivals or install an eSIM before departure. Hotel and café Wi-Fi is everywhere but you'll want data for maps on the go.</p>
       </div>
       <div class="ess">
-        <h3><span>05</span>Entry &amp; help</h3>
-        <p><b>K-ETA</b> required for visa-free visitors (apply ≥72 h ahead; rules can change — recheck before booking). Tourist hotline <b>1330</b> (24 h, multilingual). Emergency: 112 police / 119 fire &amp; ambulance.</p>
+        <h3 data-i18n="e5.h"><span>05</span>Entry &amp; help</h3>
+        <p data-i18n="e5.p"><b>K-ETA</b> required for visa-free visitors (apply ≥72 h ahead; rules can change — recheck before booking). Tourist hotline <b>1330</b> (24 h, multilingual). Emergency: 112 police / 119 fire &amp; ambulance.</p>
       </div>
       <div class="ess">
-        <h3><span>06</span>Booking shortlist</h3>
-        <p>Reserve before you fly: <b>Sky Capsule</b> (bluelinepark.com — sunset slots), <b>Spa Land</b>, <b>Lotte World tickets</b> (Klook often cheapest), and any crab-lunch weekend table. Everything else is walk-up.</p>
+        <h3 data-i18n="e6.h"><span>06</span>Booking shortlist</h3>
+        <p data-i18n="e6.p">Reserve before you fly: <b>Sky Capsule</b> (bluelinepark.com — sunset slots), <b>Spa Land</b>, <b>Lotte World tickets</b> (Klook often cheapest), and any crab-lunch weekend table. Everything else is walk-up.</p>
       </div>
     </div>
 
     <ul class="check">
-      <li><span class="box"></span><div><b>Flights &amp; hotel</b> — 5 nights, one room + rollaway or family twin, Haeundae, on Line 2.</div></li>
-      <li><span class="box"></span><div><b>K-ETA approvals ×4</b> — passport valid 6+ months for everyone. <span class="mono">≥72 HRS BEFORE</span></div></li>
-      <li><span class="box"></span><div><b>Sky Capsule</b> — book the ~15:30 Mipo→Cheongsapo sunset slot. <span class="mono">1–2 WEEKS OUT</span></div></li>
-      <li><span class="box"></span><div><b>Spa Land</b> — Sunday afternoon session ×4. <span class="mono">ONLINE, WEEKENDS SELL OUT</span></div></li>
-      <li><span class="box"></span><div><b>Lotte World Busan tickets</b> — Tuesday, Dec 22. <span class="mono">ONLINE = 20–30% OFF</span></div></li>
-      <li><span class="box"></span><div><b>Verify seasonal events</b> — Gwangalli drone show (Sat), Haeundae lighting festival, festival opening hours. <span class="mono">WEEK OF THE TRIP</span></div></li>
+      <li><span class="box"></span><div data-i18n="c1"><b>Flights &amp; hotel</b> — 5 nights, one room + rollaway or family twin, Haeundae, on Line 2.</div></li>
+      <li><span class="box"></span><div data-i18n="c2"><b>K-ETA approvals ×4</b> — passport valid 6+ months for everyone. <span class="mono">≥72 HRS BEFORE</span></div></li>
+      <li><span class="box"></span><div data-i18n="c3"><b>Sky Capsule</b> — book the ~15:30 Mipo→Cheongsapo sunset slot. <span class="mono">1–2 WEEKS OUT</span></div></li>
+      <li><span class="box"></span><div data-i18n="c4"><b>Spa Land</b> — Sunday afternoon session ×4. <span class="mono">ONLINE, WEEKENDS SELL OUT</span></div></li>
+      <li><span class="box"></span><div data-i18n="c5"><b>Lotte World Busan tickets</b> — Tuesday, Dec 22. <span class="mono">ONLINE = 20–30% OFF</span></div></li>
+      <li><span class="box"></span><div data-i18n="c6"><b>Verify seasonal events</b> — Gwangalli drone show (Sat), Haeundae lighting festival, festival opening hours. <span class="mono">WEEK OF THE TRIP</span></div></li>
     </ul>
   </div>
 </section>
 
 <!-- ================= FOOTER ================= -->
 <footer>
-  <div class="big">See you in Busan</div>
-  <p>18 – 23 Dec 2026 · Haeundae Base · 4 Travellers</p>
+  <div class="big" data-i18n="f.big">See you in Busan</div>
+  <p data-i18n="f.p">18 – 23 Dec 2026 · Haeundae Base · 4 Travellers</p>
 </footer>
 
 <!-- ================= DAY RAIL ================= -->
 <nav class="rail" aria-label="Days">
-  <a href="#d1" data-day="d1">D1<small>FRI 18</small></a>
-  <a href="#d2" data-day="d2">D2<small>SAT 19</small></a>
-  <a href="#d3" data-day="d3">D3<small>SUN 20</small></a>
-  <a href="#d4" data-day="d4">D4<small>MON 21</small></a>
-  <a href="#d5" data-day="d5">D5<small>TUE 22</small></a>
-  <a href="#d6" data-day="d6">D6<small>WED 23</small></a>
+  <a href="#d1" data-day="d1">D1<small data-i18n="r1">FRI 18</small></a>
+  <a href="#d2" data-day="d2">D2<small data-i18n="r2">SAT 19</small></a>
+  <a href="#d3" data-day="d3">D3<small data-i18n="r3">SUN 20</small></a>
+  <a href="#d4" data-day="d4">D4<small data-i18n="r4">MON 21</small></a>
+  <a href="#d5" data-day="d5">D5<small data-i18n="r5">TUE 22</small></a>
+  <a href="#d6" data-day="d6">D6<small data-i18n="r6">WED 23</small></a>
 </nav>
 
 <script>
+/* ================================================================
+   TRILINGUAL CONTENT — English lives in the HTML; FR & ZH below.
+   ================================================================ */
+var T = {
+fr: {
+"h.kicker":"Guide de voyage familial pour l'hiver",
+"h.t1":"BUSAN",
+"h.t2":"HIVER",
+"h.m1":"<b>18 → 23 DÉC</b> · 6 JOURS",
+"h.m2":"<b>4 VOYAGEURS</b>",
+"h.m3":"MAMAN · PAPA · ENFANT · <b>L'AMIE DE MAMAN</b>",
+"h.orb":"JOURS",
+"h.cue":"Faites défiler",
+"i.label":"Le programme",
+"i.lede":"Six jours d'hiver sur la côte sud de la Corée — des temples face à la mer, des marchés nocturnes, le plus grand spa du pays, et une <em>excellente</em> excuse pour manger du crabe.",
+"i.f1":"BASE <b>Haeundae</b>",
+"i.f2":"HIVER <b>2–9°C</b>",
+"i.f3":"COUCHER <b>~17:15</b>",
+"i.f4":"RYTHME <b>famille réaliste</b>",
+
+"d1.num":"Jour un","d1.date":"VEN · 18 DÉC",
+"d1.name":"Atterrissage en douceur, premier air marin",
+"d1.sub":"Arrivée à Gimhae, traversée de la ville jusqu'à Haeundae, et laissez la plage faire le travail contre le décalage horaire. Soirée tranquille — les grands jours arrivent.",
+"d1.tags":`<span class="tag kid">Enfant-friendly</span><span class="tag food">Dîner fruits de mer</span><span class="tag">Journée légère</span>`,
+"d1.s1.dur":"· vol + arrivée","d1.s1.name":"Atterrissage à Gimhae (PUS)",
+"d1.s1.body":`<p>Un départ matinal vous fait atterrir à l'aéroport Gimhae de Busan vers midi. Prenez vos cartes T-money et une SIM/eSIM prépayée au hall des arrivées avant de partir.</p><span class="lbl">À l'aéroport</span><ul><li><b>Carte T-money</b> dans n'importe quel CU / 7-Eleven — carte ₩4 000, puis rechargez ~₩20 000 chacun.</li><li>SIM touristique KT / SKT ou eSIM — forfait 5 jours ~₩20 000. Réservez en ligne à l'avance.</li><li>K-ETA : obligatoire pour les voyageurs sans visa — déposez la demande au moins 72 h avant le départ.</li></ul><p class="note">Vérifiez les règles d'entrée et les horaires de vol ~1 mois avant.</p>`,
+"d1.s2.dur":"· ~70 min de trajet","d1.s2.name":"Aéroport → Haeundae",
+"d1.s2.body":`<p>Deux façons de traverser la ville — la version économique et pittoresque, ou la version famille-fatiguée :</p><ul><li><b>Métro (₩1 700/pers) :</b> Gimhae Light Rail jusqu'à Sasang, correspondance ligne 2 (verte) jusqu'à Haeundae. ~70 min avec un transfert facile. Ascenseurs dans toutes les stations.</li><li><b>Taxi (₩35–45k) :</b> ~40 min direct jusqu'à l'hôtel. Partagé entre quatre, c'est souvent le meilleur choix à l'arrivée avec bagages et enfant.</li></ul><p>Utilisez <b>Naver Map</b> ou <b>KakaoMap</b> — Google Maps est peu fiable pour les transports coréens.</p>`,
+"d1.s3.dur":"· check-in + pause","d1.s3.name":"Check-in &amp; détente",
+"d1.s3.body":`<p>Base pour les six nuits : une chambre familiale à <b>Haeundae</b> — à pied de la plage, la ligne 2 au pied de l'hôtel, et proche du métro pour chaque excursion du programme.</p><ul><li>On déballe une seule fois. Machine à laver, bouilloire, plaids en plus — vous connaissez la chanson.</li><li>Raid au convenience store : lait à la banane, kimbap, chauffe-mains pour demain.</li></ul>`,
+"d1.s4.dur":"· ~75 min de marche","d1.s4.name":"Plage de Haeundae &amp; île Dongbaek",
+"d1.s4.body":`<p>Le coucher de soleil d'hiver tombe vers 17h15 — allez-y quand même. La plage déserte, la statue de bronze de la sirène, et les lumières qui s'allument sur la mer de l'Est : la scène d'arrivée parfaite, à 5 minutes de partout à Haeundae.</p><ul><li>Bouclez la <b>promenade Dongbaekseom</b> (plate, 20 min, facile avec un enfant) en passant devant la maison Nurimaru APEC.</li><li>Étals de bungeoppang &amp; hotteok près de l'entrée de la plage — premier goûter du voyage.</li><li>Le vent de mer n'est pas une blague en décembre — superposez les couches, bonnets, chauffe-mains.</li></ul>`,
+"d1.s5.dur":"· dîner","d1.s5.name":"Première soirée fruits de mer",
+"d1.s5.body":`<p>Deux options solides pour la première soirée, toutes deux à quelques minutes de la plage :</p><ul><li><b>Marché de poisson cru de Millak (민락회타운) :</b> choisissez un poisson vivant en bas, on le tranche en haut. Hoe + maeuntang (ragoût de poisson épicé) pour toute la table. ~₩30–40k/pers.</li><li><b>Rue des anguilles grillées :</b> jangeo-gui au charbon de bois — riche, réconfortant, très Busan.</li><li>Plan B enfant : un restaurant de kalguksu (nouilles coupées au couteau) — chaud et doux.</li></ul><p class="note">Les espèces aident aux étals du marché ; les restaurants prennent les cartes.</p>`,
+
+"d2.num":"Jour deux","d2.date":"SAM · 19 DÉC",
+"d2.name":"Village de couleurs, marché aux poissons, pont de lumière",
+"d2.sub":"La boucle classique du sud de Busan : les ruelles peintes de Gamcheon, les marchés de la vieille ville, puis le spectacle de drones de Gwangalli après la tombée de la nuit. Grosse journée — partez tôt.",
+"d2.tags":`<span class="tag kid">Chasse aux tampons</span><span class="tag food">Tournée de street food</span><span class="tag">Spectacle gratuit</span>`,
+"d2.s1.dur":"· ~3 h","d2.s1.name":"Village culturel de Gamcheon",
+"d2.s1.body":`<p>La carte postale de Busan : une colline de maisons peintes de toutes les couleurs, empilées au-dessus de la mer. <b>Allez-y avant 10h</b> — en fin de matinée, c'est noir de monde.</p><span class="lbl">Avec un enfant</span><ul><li>Achetez la <b>carte aux tampons</b> (₩2 000) au centre d'information — réunir les 9 tampons transforme les ruelles en chasse au trésor.</li><li>La statue du Petit Prince &amp; du Renard en haut — tout le monde fait la queue pour la photo.</li><li>Des escaliers partout ; bonnes chaussures, oubliez la poussette.</li></ul><span class="lbl">Comment y aller</span><ul><li>Ligne 2 jusqu'à Seomyeon → ligne 1 jusqu'à Toseong (토성) sortie 6 → minibus vert de village 2-2 / 2 / 1-1 en montée (~15 min), ou ~₩6k de taxi depuis la station.</li><li>Entrée gratuite ; carte en option au bureau d'information.</li></ul>`,
+"d2.s2.dur":"· déjeuner + flânerie","d2.s2.name":"BIFF Square &amp; marché Gukje",
+"d2.s2.body":`<p>Le déjeuner est un buffet à pied dans l'ancien quartier du cinéma de Busan — c'est ici que la street food coréenne devient sérieuse.</p><ul><li><b>BIFF square :</b> seed hotteok (syrupé, noiseté — l'original), tteokbokki, sundae, brochettes d'eomuk. Partagez tout, ~₩8–12k au total.</li><li><b>Marché Gukje :</b> un dédale d'étals depuis la guerre de Corée — snacks, chaussettes, souvenirs et sa fameuse halle alimentaire.</li><li>L'amie de maman adorera les boutiques vintage sous les arcades.</li></ul><p class="note">Bus 2 depuis la base de Gamcheon, ou ~₩7k de taxi.</p>`,
+"d2.s3.dur":"· 5 min à pied","d2.s3.name":"Marché aux poissons de Jagalchi",
+"d2.s3.body":`<p>Le plus grand marché aux poissons de Corée, en bord de port. Même si personne n'achète, le rez-de-chaussée — des bacs de tout ce que la mer de l'Est produit — est un aquarium que l'on traverse à pied.</p><ul><li>Encore un peu faim ? La halle de sashimi à l'étage : on désigne, on tranche, on mange face au port (~₩25k/pers).</li><li>Étage des produits séchés : superbes souvenirs de calmar et d'algues ; les prix baissent si vous en prenez deux.</li><li>Le poulpe vivant (sannakji) est la commande des parents courageux.</li></ul>`,
+"d2.s4.dur":"· fenêtre de repos","d2.s4.name":"Pause café &amp; retour à l'hôtel",
+"d2.s4.body":`<p>Deux grands marchés en un après-midi, c'est beaucoup avec un enfant. Options :</p><ul><li>Chocolat chaud dans un café de Nampo-dong (les cafés des ruelles derrière le théâtre sont excellents).</li><li>Ou taxi retour à Haeundae (₩15k, 25 min) pour un vrai repos avant le spectacle nocturne — recommandé.</li></ul>`,
+"d2.s5.dur":"· soirée","d2.s5.name":"Plage de Gwangalli &amp; spectacle de drones",
+"d2.s5.body":`<p>Dîner sur la plage avec l'ensemble du <b>pont Gwangan</b> illuminé au-dessus de l'eau — puis des centaines de drones dessinent des formes dans le ciel. C'est gratuit, c'est le samedi soir, et c'est la plus belle soirée de Busan.</p><ul><li>Ligne 2 jusqu'à Geumnyeonsan (금련산) sortie 1, ou Gwangan (광안) sortie 3 → 8 min à pied jusqu'au sable.</li><li>Dîner : la ruelle des sashimis derrière la plage (광안리 횟집거리) — hoedeopbap (bol de riz au sashimi) ~₩15k, udon adapté aux enfants juste à côté.</li><li><b>M Drone Light Show :</b> en général deux spectacles le samedi soir (~19h &amp; ~21h, 10 min chacun). Les horaires varient selon la saison — confirmez sur le site de la ville de Busan cette semaine-là.</li><li>Placez-vous sur le sable face au pont ; arrivez 30 min à l'avance pour la vue dégagée.</li></ul>`,
+
+"d3.num":"Jour trois","d3.date":"DIM · 20 DÉC",
+"d3.name":"Temple sur la mer, crabe au déjeuner, spa jusqu'à la nuit",
+"d3.sub":"Le seul temple en bord de mer de Busan le matin, le crabe d'hiver à la source, puis quatre étages de bains chauds dans le plus grand spa du pays. La journée préférée des mamans.",
+"d3.tags":`<span class="tag mums">Après-midi spa</span><span class="tag food">Crabe d'hiver</span><span class="tag kid">Espace enfants au spa</span>`,
+"d3.s1.dur":"· ~2,5 h","d3.s1.name":"Temple Haedong Yonggungsa",
+"d3.s1.body":`<p>La plupart des temples coréens se cachent en montagne. Celui-ci dévale les rochers jusqu'à la mer — salles de prière, un Bouddha rieur doré, et un long escalier de 108 marches le long de l'eau.</p><ul><li>Ligne 2 jusqu'à Haeundae sortie 7 → bus 181 jusqu'à l'arrêt Yonggungsa, puis 10 min à pied en descente ; taxi depuis Haeundae ~₩12k, 20 min.</li><li>Y allez tôt : les cars de touristes arrivent dès 10h.</li><li>Couvrez-vous bien — le cap est en plein vent marin.</li><li>Quête enfant : comptez les statues des animaux du zodiaque le long de l'escalier (12, un par année).</li></ul><p class="note">Vérifiez les horaires d'ouverture — ils varient selon la saison.</p>`,
+"d3.s2.dur":"· déjeuner","d3.s2.name":"Déjeuner : crabe des neiges de Gijang",
+"d3.s2.body":`<p>Décembre, c'est la pleine saison du <b>daegae</b> (crabe des neiges), et le village de pêcheurs de Gijang — à 15 minutes sur la côte — est là où les Busanais vont en manger. Crabe entier vapeur à table, pattes coupées aux ciseaux, riz frit aux œufs pour finir.</p><ul><li>Les ruelles de restaurants aux crabes se situent près de Jangseungpo / le port de Gijang — taxi ~₩15k depuis le temple, ou ligne 1 jusqu'à Gijang puis court trajet en taxi.</li><li>Commandez le <b>대게찜</b> (plateau vapeur) pour la table — prix du marché, en général ₩50–70k pour un crabe qui nourrit 2–3 personnes, banchan offerts.</li><li>Terminez par le 볶음밥 (riz frit aux œufs de crabe) préparé dans la carapace — non négociable.</li></ul><p class="note">Si le crabe semble trop lourd, les cabanes aux fruits de mer de Cheongsapo font des coquillages grillés.</p>`,
+"d3.s3.dur":"· ~4 h","d3.s3.name":"Shinsegae Centum City &amp; Spa Land",
+"d3.s3.body":`<p>Le plus grand magasin du monde (record Guinness, littéralement) avec quatre étages de jjimjilbang en dessous. Voilà le programme de cet après-midi froid — chacun y trouve son compte.</p><ul><li><b>Spa Land (₩25–35k / 4 h) :</b> 22 bains de sources chaudes, 13 saunas thématiques (sel, boules d'argile, glace), zones de sieste, snack-bar. Réservez en ligne — les week-ends affichent complet.</li><li><b>Pour l'enfant :</b> les bains en famille (mixtes, en maillot) à horaires fixes — regardez le tableau ; le coin jeux occupe les ados.</li><li><b>Pour les mamans :</b> le jardin extérieur de bains de pieds en eau thermale, face à la ville. C'est LE moment.</li><li><b>Pour celui ou celle qui veut shopper :</b> Centum City au-dessus — beauté coréenne, étage enfants, food hall de saison.</li><li>Ligne 2 jusqu'à Centum City (센텀시티) sortie 10 — vous êtes à l'intérieur avant d'avoir froid.</li></ul>`,
+"d3.s4.dur":"· dîner à proximité","d3.s4.name":"Dîner facile à Centum",
+"d3.s4.body":`<p>Pas besoin de se déplacer — mangez sur place :</p><ul><li>Food hall du Shinsegae (B1) — étals réconfortants coréens, rapides et chauds.</li><li>Ou les étages restaurants : le samgyetang (poulet au ginseng) est la commande hivernale idéale.</li><li>Retour à Haeundae en 12 min par la ligne 2 ; soirée tranquille.</li></ul>`,
+"d4.num":"Jour quatre","d4.date":"LUN · 21 DÉC",
+"d4.name":"Temple de montagne, mur de forteresse, capsule céleste",
+"d4.sub":"Montée sur la montagne sacrée de Busan pour un temple de 1 300 ans et des vues d'hiver, puis retour sur la côte pour le train aérien au coucher du soleil. Journée d'aventure pour l'enfant, air pur pour tout le monde.",
+"d4.tags":`<span class="tag kid">Sky capsule</span><span class="tag mums">Photos au temple</span><span class="tag">Marche modérée</span>`,
+"d4.s1.dur":"· trajet + approche","d4.s1.name":"Montée à Beomeosa",
+"d4.s1.body":`<p>Le grand temple de montagne de Busan, fondé en 678 — portes de pierre, cours bordées de lanternes, et une vallée où pousse la glycine sauvage au printemps. En décembre, les dernières érables rouges peuvent tenir en altitude.</p><ul><li>Ligne 1 jusqu'à Beomeosa (범어사) sortie 5 → navette gratuite du temple (fréquente) ou 15 min de marche en montée devant les boutiques.</li><li>Prenez des yakgwa (gâteaux au miel) chez les boutiques de la colline — spécialité de la zone, validée par les enfants.</li></ul>`,
+"d4.s2.dur":"· ~1 h 45","d4.s2.name":"Temple &amp; porte de la forteresse",
+"d4.s2.body":`<p>Parcourez le temple lentement : la porte à un pilier, la pagode de trois étages, le hall principal où l'on peut regarder les moines chanter. Derrière le temple, un sentier grimpe vers <b>Geumjeongsanseong</b>, la plus grande muraille de forteresse de montagne de Corée — même juste jusqu'à la première porte (porte Nord, ~25 min de montée), ça vaut le coup.</p><ul><li>Carburant enfant : le <b>café de cuisine temple</b> du site fait des plateaux simples (réservation conseillée le week-end).</li><li>La boucle des 800 m de muraille est réservée aux bons marcheurs — avec un enfant, retournez-vous à la porte.</li><li>Option téléphérique complet : depuis Geumgang Park (금강공원), le téléphérique grimpe jusqu'à la crête (~₩12k l'aller-retour) — vues d'hiver spectaculaires si le ciel est clair.</li></ul>`,
+"d4.s3.dur":"· déjeuner","d4.s3.name":"Déjeuner de montagne",
+"d4.s3.body":`<p>Redescendez pour déjeuner dans la rue des restaurants de Beomeosa — commandez le plateau de cuisine temple local ou un <b>baeksuk</b> (soupe de poulet entier) fumant pour chasser le froid de la montagne.</p><ul><li>La plupart des adresses ~₩12–18k/pers ; les soupes de poulet servent facilement 2–3 personnes.</li><li>Plateaux végétariens de temple disponibles — parfaits pour les dames.</li></ul>`,
+"d4.s4.dur":"· à réserver","d4.s4.name":"Haeundae Blueline Park — Sky Capsule",
+"d4.s4.body":`<p>L'aimant à enfants du voyage : de petites capsules pastel qui glissent sur un rail à 7–10 m au-dessus de la côte, de Mipo à Cheongsapo — la mer d'un côté, les falaises et les cafés de l'autre. En hiver, les départs à l'heure dorée attrapent le coucher de soleil sur l'eau.</p><ul><li><b>Réservez en ligne 1–2 semaines à l'avance</b> (bluelinepark.com ou Klook) — les créneaux coucher de soleil de décembre partent vite. ~₩35–50k par capsule (4 places).</li><li>Station Mipo : ligne 2, sortie 1 de Dongbaek, ou 20 min à pied le long de la côte depuis Haeundae.</li><li>Trajet one-way ~30 min ; partez vers 15h30, chocolat chaud à Cheongsapo, retour en train (₩7k) — ou capsule sunset dans les deux sens.</li><li>Astuce Cheongsapo : le phare se met à clignoter juste à votre arrivée — LA photo que tout le monde prend.</li></ul>`,
+"d4.s5.dur":"· dîner","d4.s5.name":"Dîner à la rue marchande de Haeundae",
+"d4.s5.body":`<p>Simple, chaud et proche du lit — l'allée gourmande du marché traditionnel fait les classiques aux prix locaux.</p><ul><li>Commandez : <b>dwaeji gukbap</b> (soupe riz-porc — la spécialité de Busan), plus un jeon (galette salée) à partager si quelqu'un a encore faim.</li><li>Prenez fruits et snacks pour la journée parc d'attractions de demain.</li></ul>`,
+
+"d5.num":"Jour cinq","d5.date":"MAR · 22 DÉC",
+"d5.name":"Journée complète à Lotte World, lumières de Noël ensuite",
+"d5.sub":"Un parc d'attractions quasiment entièrement couvert, construit exactement pour cette météo, puis les illuminations de la plage de Haeundae s'allument pour la saison. La journée de l'enfant — et honnêtement, celle des adultes aussi.",
+"d5.tags":`<span class="tag kid">Parc d'attractions</span><span class="tag">À l'intérieur = au chaud</span><span class="tag food">Marché nocturne</span>`,
+"d5.s1.dur":"· trajet","d5.s1.name":"Direction Osiria",
+"d5.s1.body":`<p>Ligne 2 jusqu'à Jangsan (장산) sortie 6, puis taxi ~10 min (₩8k) ou navette vers l'entrée du parc. Partez un peu tôt — vous voulez être aux portes à l'ouverture.</p>`,
+"d5.s2.dur":"· journée complète","d5.s2.name":"Lotte World Adventure Busan",
+"d5.s2.body":`<p>Le petit frère du Lotte World de Séoul, conçu pour l'intérieur — manèges, parades et un espace enfants entier sous un même toit immense. En décembre, décorations de Noël partout et risque météo quasi nul.</p><ul><li><b>Billets :</b> achetez en ligne (Klook / site officiel) avant de partir — souvent 20–30 % de moins qu'à l'entrée (~₩55–65k adulte, tarifs enfants ; cherchez les packs famille).</li><li><b>Stratégie :</b> à l'ouverture, foncez sur les grosses attractions (les files de Giant Digger et Giant Splash explosent vite), puis espace enfants quand la foule monte.</li><li>Déjeuner sur place — le food hall est honnêtement bon et pas exorbitant.</li><li>Consignes près de l'entrée pour les manteaux ; sinon vous allez avoir trop chaud.</li><li>Parade vers midi / après-midi — regardez le tableau à l'entrée.</li></ul>`,
+"d5.s3.dur":"· retour à Haeundae","d5.s3.name":"Festival des lumières de Noël de Haeundae",
+"d5.s3.body":`<p>Chaque décembre, la promenade de la plage devient un tunnel de lumières et d'installations — arbres, un sapin géant sur la place, œuvres lumineuses sur le sable. Ça dure à peu près du début décembre à fin janvier, allumé à la tombée de la nuit (~17h30).</p><ul><li>Gratuit, accessible à pied, à 5 minutes de l'hôtel — la soirée parfaite en mode tranquille.</li><li>Les soirs de semaine sont bien plus calmes que le week-end.</li></ul><p class="note">Les dates du festival sont annoncées chaque automne — confirmez pour 2026 avant de partir.</p>`,
+"d5.s4.dur":"· dîner","d5.s4.name":"Le grand dernier dîner à Busan",
+"d5.s4.body":`<p>Choix de dernière soirée, tous dans le quadrillage de Haeundae :</p><ul><li><b>Soirée BBQ coréen :</b> grill au hanwoo (bœuf coréen) — la commande festive. ~₩35k/pers avec soju.</li><li><b>Option réconfort :</b> seolleongtang (soupe d'os de bœuf) — douce, chaude, parfaite avant un jour de voyage.</li><li><b>Le toast des mamans :</b> dernier verre au bar de l'hôtel ou dans un bar à bière artisanale de Haeundae — vous l'avez mérité.</li></ul>`,
+
+"d6.num":"Jour six","d6.date":"MER · 23 DÉC",
+"d6.name":"Matin lent, dernier café face à la mer, retour en avion",
+"d6.sub":"Pas de réveil. Un dernier regard sur l'eau, souvenirs emballés, et un trajet aéroport tranquille avec de la marge.",
+"d6.tags":`<span class="tag">Jour de départ</span><span class="tag food">Souvenirs</span>`,
+"d6.s1.dur":"· café + valises","d6.s1.name":"Dernière vue sur la mer &amp; check-out",
+"d6.s1.body":`<p>Café dans un café en front de mer à regarder les joggeurs du matin — la version silencieuse de la vue de votre premier jour. Check-out en fin de matinée ; la plupart des hôtels gardent les bagages gratuitement.</p>`,
+"d6.s2.dur":"· raid souvenirs","d6.s2.name":"Quoi rapporter",
+"d6.s2.body":`<p>Un seul passage efficace, tout près de l'hôtel :</p><ul><li><b>Marché traditionnel de Haeundae :</b> eomuk frais (gâteaux de poisson — sous vide pour l'avion), huile de sésame, algues.</li><li><b>Convenience stores :</b> glissez quelques kimbap triangulaires pour l'avion ; amandes au miel-beurre ; chaussettes mignonnes (ça arrivera).</li><li><b>Réassort K-beauty</b> chez l'Olive Young du coin si la journée Centum City n'a pas suffi.</li><li>Les liquides de plus de 100 ml en soute — les paquets de gâteaux de poisson passent dans les deux cas.</li></ul>`,
+"d6.s3.time":"Vol – 3 h","d6.s3.name":"Vers l'aéroport de Gimhae, et décollage",
+"d6.s3.body":`<ul><li><b>Métro :</b> Haeundae → Sasang (~50 min) → Gimhae Light Rail jusqu'à l'aéroport (~15 min). Comptez 90 min porte-à-terminal avec les bagages.</li><li><b>Taxi :</b> ~40 min, ₩35–45k — les adieux sans stress avec valises et enfant.</li><li>Remboursement de TVA (comptoirs Global Blue / Global Tax Free) si vous avez gardé les reçus de plus de ₩30k.</li><li>L'aéroport n'est pas immense : 1 h 30 – 2 h avant le départ, c'est confortable.</li></ul>`,
+
+"e.label":"Notes de terrain","e.title":"Avant de partir",
+"e1.h":`<span>01</span>Météo de décembre`,
+"e1.p":`<b>2–9°C</b>, sec et venteux sur la côte. Coucher de soleil ~17h15, donc les sorties dehors se regroupent tôt. Emballez doudounes, bonnets, gants et un parapluie compact ; les chauffe-mains de poche (핫팩) se vendent dans tous les convenience stores et chez Daiso pour ~₩1 000.`,
+"e2.h":`<span>02</span>Se déplacer`,
+"e2.p":`Le métro de Busan couvre tout ce programme. Carte <b>T-money</b> (₩4 000 + recharge) valable au métro, au bus et au taxi. Les taxis démarrent ~₩4 800 et sont bon marché en ville. Utilisez <b>Naver Map</b> ou <b>KakaoMap</b> — Google Maps gère mal les transports coréens.`,
+"e3.h":`<span>03</span>Argent &amp; cartes`,
+"e3.p":`Cartes acceptées presque partout ; étals de marché et petits restaurants apprécient les espèces. Distributeurs internationaux dans les convenience stores. Street food ₩2–8k, repas assis ₩12–25k/pers, festin de crabe ₩30–40k/pers.`,
+"e4.h":`<span>04</span>Connexion`,
+"e4.p":`SIM touristique prépayée ou eSIM (~₩20k pour 5 jours, KT/SKT) — à retirer aux arrivées de PUS ou à installer avant le départ. Wi-Fi hôtel et cafés partout, mais vous voudrez du réseau pour les cartes en déplacement.`,
+"e5.h":`<span>05</span>Entrée &amp; aide`,
+"e5.p":`<b>K-ETA</b> obligatoire pour les voyageurs sans visa (déposez ≥72 h avant ; les règles peuvent changer — revérifiez avant de réserver). Hotline touristique <b>1330</b> (24 h, multilingue). Urgences : 112 police / 119 pompiers &amp; ambulance.`,
+"e6.h":`<span>06</span>À réserver en priorité`,
+"e6.p":`À réserver avant de partir : <b>Sky Capsule</b> (bluelinepark.com — créneaux coucher de soleil), <b>Spa Land</b>, <b>billets Lotte World</b> (Klook est souvent le moins cher) et une table de crabe du week-end. Tout le reste se fait sur place.`,
+"c1":`<b>Vols &amp; hôtel</b> — 5 nuits, une chambre + lit d'appoint ou twin familial, Haeundae, sur la ligne 2.`,
+"c2":`<b>Approbations K-ETA ×4</b> — passeport valide 6+ mois pour tout le monde. <span class="mono">≥72 H AVANT</span>`,
+"c3":`<b>Sky Capsule</b> — réservez le créneau coucher de soleil ~15h30 Mipo→Cheongsapo. <span class="mono">1–2 SEMAINES AVANT</span>`,
+"c4":`<b>Spa Land</b> — session dimanche après-midi ×4. <span class="mono">EN LIGNE, WEEK-ENDS COMPLETS</span>`,
+"c5":`<b>Billets Lotte World Busan</b> — mardi 22 déc. <span class="mono">EN LIGNE = -20–30 %</span>`,
+"c6":`<b>Vérifier les événements saisonniers</b> — spectacle de drones de Gwangalli (sam.), festival des lumières de Haeundae, horaires d'ouverture. <span class="mono">SEMAINE DU VOYAGE</span>`,
+"f.big":"À bientôt à Busan",
+"f.p":"18 – 23 déc. 2026 · Base Haeundae · 4 voyageurs",
+"r1":"VEN 18","r2":"SAM 19","r3":"DIM 20","r4":"LUN 21","r5":"MAR 22","r6":"MER 23",
+},
+zh: {
+"h.kicker":"家庭冬季旅行指南",
+"h.t1":"BUSAN",
+"h.t2":"冬日",
+"h.m1":"<b>12月18日 → 23日</b> · 共6天",
+"h.m2":"<b>4位旅客</b>",
+"h.m3":"妈妈 · 爸爸 · 孩子 · <b>妈妈的好友</b>",
+"h.orb":"天",
+"h.cue":"下滑查看行程",
+"i.label":"行程总览",
+"i.lede":"在韩国南海岸度过六个冬日——面朝大海的寺庙、热闹的夜市、全国最大的汗蒸SPA,还有<em>一个绝佳的理由</em>去吃螃蟹。",
+"i.f1":"大本营 <b>海云台</b>",
+"i.f2":"冬季 <b>2–9°C</b>",
+"i.f3":"日落 <b>约17:15</b>",
+"i.f4":"节奏 <b>亲子友好</b>",
+
+"d1.num":"第一天","d1.date":"周五 · 12月18日",
+"d1.name":"轻松抵达,第一口海风",
+"d1.sub":"抵达金海机场,横穿釜山入住海云台,让海滩帮你倒时差。晚上早点休息——重头戏都在后面。",
+"d1.tags":`<span class="tag kid">亲子友好</span><span class="tag food">海鲜晚餐</span><span class="tag">轻松日</span>`,
+"d1.s1.dur":"· 航班+抵达","d1.s1.name":"飞抵金海机场(PUS)",
+"d1.s1.body":`<p>上午出发,中午左右抵达釜山金海机场。离开前先在到达厅买好T-money交通卡和预付费SIM卡或eSIM。</p><span class="lbl">在机场</span><ul><li>在任意CU / 7-Eleven购买<b>T-money卡</b>——卡费₩4,000,每人再充值约₩20,000。</li><li>KT / SKT旅游SIM卡或eSIM——5天流量套餐约₩20,000,建议提前网上订好。</li><li>K-ETA:免签旅客必须申请——出发前至少72小时提交。</li></ul><p class="note">出发前约1个月,确认入境规定和航班时间。</p>`,
+"d1.s2.dur":"· 车程约70分钟","d1.s2.name":"机场 → 海云台",
+"d1.s2.body":`<p>进城两种方式——省钱观光版,和带孩子的省心版:</p><ul><li><b>地铁(每人₩1,700):</b>金海轻轨到沙上站,换乘2号线(绿色)到海云台。约70分钟,换乘一次,各站均有电梯。</li><li><b>出租车(₩35–45k):</b>约40分钟直达酒店。四人分摊,拖着行李带孩子时往往是更聪明的选择。</li></ul><p>请使用<b>Naver Map</b>或<b>KakaoMap</b>——Google Maps在韩国的公交导航不可靠。</p>`,
+"d1.s3.dur":"· 入住+休整","d1.s3.name":"入住 &amp; 休整",
+"d1.s3.body":`<p>六晚的大本营:<b>海云台</b>的家庭房——步行可达海滩,门口就是地铁2号线,每天出行的交通都很方便。</p><ul><li>行李只拆一次。洗衣机、烧水壶、多加一条毯子——都懂的。</li><li>便利店扫荡:香蕉牛奶、紫菜包饭、明天的暖宝宝。</li></ul>`,
+"d1.s4.dur":"· 步行约75分钟","d1.s4.name":"海云台海滩 &amp; 冬柏岛",
+"d1.s4.body":`<p>冬天的日落大约在17:15——但一定要去。空旷的沙滩、铜铸美人鱼雕像、东海之上渐次亮起的灯火——这是最完美的抵达画面,从海云台任何地方走过去只要5分钟。</p><ul><li>走一走<b>冬柏岛木栈道</b>(平缓、20分钟、带娃轻松),顺路看看APEC世峰楼。</li><li>沙滩入口附近的鲫鱼饼&amp;糖饼摊——此行第一份小吃。</li><li>十二月的海风不是开玩笑的——多穿几层,戴帽子,备暖宝宝。</li></ul>`,
+"d1.s5.dur":"· 晚餐","d1.s5.name":"第一顿海鲜大餐",
+"d1.s5.body":`<p>两个稳妥的初夜之选,都离海滩只有几步路:</p><ul><li><b>民乐生鱼片市场(민락회타운):</b>楼下挑一条活鱼,楼上现切。生鱼片+辣鱼汤(maeuntang)上桌。每人约₩30–40k。</li><li><b>烤鳗鱼一条街:</b>炭烤鳗鱼(jangeo-gui)——香浓热乎,很有釜山味道。</li><li>孩子备选:刀切面(kalguksu)店——暖胃又清淡。</li></ul><p class="note">市场摊位多收现金;餐厅一般都能刷卡。</p>`,
+
+"d2.num":"第二天","d2.date":"周六 · 12月19日",
+"d2.name":"彩色村落、海鲜市场、光之大桥",
+"d2.sub":"釜山南区的经典环线:甘川的彩绘小巷、老城市场,天黑后还有广安里的无人机灯光秀。行程很满——早点出发。",
+"d2.tags":`<span class="tag kid">盖章寻宝</span><span class="tag food">街头美食扫荡</span><span class="tag">免费晚间秀</span>`,
+"d2.s1.dur":"· 约3小时","d2.s1.name":"甘川文化村",
+"d2.s1.body":`<p>釜山的名片:一整面山坡的房子漆成各种颜色,层层叠叠伸向大海。<b>10:00前到</b>——临近中午就人山人海了。</p><span class="lbl">带孩子怎么玩</span><ul><li>在游客中心买一张<b>盖章地图</b>(₩2,000)——集齐9枚印章,小巷秒变寻宝游戏。</li><li>山顶的小王子与狐狸雕像——人人排队拍照。</li><li>到处都是台阶;穿舒服的鞋,别推婴儿车。</li></ul><span class="lbl">怎么去</span><ul><li>2号线到西面站换乘1号线到土城站(토성)6号出口→换乘绿色乡村小巴2-2 / 2 / 1-1上山(约15分钟),或从车站打车约₩6k。</li><li>免门票;地图在游客中心自愿购买。</li></ul>`,
+"d2.s2.dur":"· 午餐+逛市场","d2.s2.name":"BIFF广场 &amp; 国际市场",
+"d2.s2.body":`<p>午餐就在釜山老电影区一路吃过去——韩国街头美食在这里是认真的。</p><ul><li><b>BIFF广场:</b>坚果糖饼(糖浆坚果馅——糖饼的鼻祖)、炒年糕、血肠、鱼饼串。什么都分着吃,人均₩8–12k吃到扶墙。</li><li><b>国际市场:</b>朝鲜战争时期延续至今的摊位迷宫——小吃、袜子、纪念品,还有 famous 的美食 alley。</li><li>妈妈的好友一定会爱上骑楼里的复古小店。</li></ul><p class="note">从甘川山脚乘2路巴士,或打车约₩7k。</p>`,
+"d2.s3.dur":"· 步行5分钟","d2.s3.name":"札嘎其海鲜市场",
+"d2.s3.body":`<p>韩国最大的海鲜市场,就在港口边。即使什么都不买,一楼那些装着整个东海海产的玻璃缸,也足以为你步行其中的水族馆。</p><ul><li>还吃得下?二楼生鱼片大厅:指哪切哪,对着港口现吃(约₩25k/人)。</li><li>干海鲜楼层:鱿鱼干、紫菜都是好手信,买两份还能砍价。</li><li>活章鱼(sannakji)是勇敢家长的今日挑战。</li></ul>`,
+"d2.s4.dur":"· 休息窗口","d2.s4.name":"咖啡歇脚 &amp; 回酒店休整",
+"d2.s4.body":`<p>一个下午连逛两个大市场,对孩子来说强度不小。两个选项:</p><ul><li>在南浦洞来杯热巧克力(剧场后面小巷里的咖啡馆水准很高)。</li><li>或直接打车回海云台(₩15k,25分钟)好好歇一会,晚上再看秀——推荐。</li></ul>`,
+"d2.s5.dur":"· 晚间","d2.s5.name":"广安里海滩 &amp; 无人机灯光秀",
+"d2.s5.body":`<p>在沙滩上吃晚饭,看<b>广安大桥</b>整段灯火横跨海面——随后数百架无人机在夜空作画。免费、每周六上演,堪称釜山最美的夜晚。</p><ul><li>2号线到金莲山站(금련산)1号出口,或广安站(광안)3号出口→步行8分钟到沙滩。</li><li>晚餐:海滩后面的生鱼片胡同(광안리 횟집거리)——海鲜盖饭约₩15k,隔壁就有适合孩子的乌冬面。</li><li><b>M无人机灯光秀:</b>通常为周六晚两场(约19:00和21:00,每场10分钟)。时间随季节调整——当周在釜山市官网确认。</li><li>面朝大桥站在沙滩上;提前30分钟占个好位置。</li></ul>`,
+
+"d3.num":"第三天","d3.date":"周日 · 12月20日",
+"d3.name":"海上寺庙、午餐螃蟹、泡到关门的SPA",
+"d3.sub":"上午去釜山唯一的海边寺庙,在产地吃冬天的雪蟹,下午在全国最大的汗蒸SPA泡上四个小时。妈妈们最爱的一天。",
+"d3.tags":`<span class="tag mums">SPA午后</span><span class="tag food">冬蟹</span><span class="tag kid">SPA儿童区</span>`,
+"d3.s1.dur":"· 约2.5小时","d3.s1.name":"海东龙宫寺",
+"d3.s1.body":`<p>韩国大多数寺庙都藏在深山里,这一座却顺着岩石一直铺到海边——佛堂、金色弥勒佛,还有临水的108级台阶。</p><ul><li>2号线到海云台站7号出口→乘181路到龙宫寺站下车,再步行10分钟下坡;从海云台打车约₩12k,20分钟。</li><li>早点去:旅游大巴10点以后陆续到达。</li><li>注意保暖——岬角上毫无遮挡,海风刺骨。</li><li>孩子的任务:数一数台阶旁的十二生肖雕像(12座,每人一座本命年)。</li></ul><p class="note">出发前查一下开放时间——随季节变化。</p>`,
+"d3.s2.dur":"· 午餐","d3.s2.name":"机张雪蟹午餐",
+"d3.s2.body":`<p>12月正是<b>雪蟹(대게)</b>最肥的季节,而釜山人吃蟹要往北15分钟的渔港机张。整只活蟹现蒸上桌,用剪刀剪开蟹腿,最后用蟹壳里的蟹黄炒饭收尾。</p><ul><li>蟹餐厅胡同在长圣浦/机张港附近——从寺庙打车约₩15k,或乘1号线到机张站再短途打车。</li><li>点<b>대게찜</b>(清蒸套餐)整桌共享——市价,一只够2–3人吃的蟹通常₩50–70k,小菜免费。</li><li>收尾必须是蟹黄炒饭(볶음밥),用蟹壳盛出来——不可商量。</li></ul><p class="note">如果觉得螃蟹太heavy,青沙浦的海鲜棚屋有烤贝类可选。</p>`,
+"d3.s3.dur":"· 约4小时","d3.s3.name":"新世界Centum City &amp; Spa Land",
+"d3.s3.body":`<p>吉尼斯认证的世界最大百货商店,地下还有四层的汗蒸幕。寒冷的下午就该这么过——每个人各取所需。</p><ul><li><b>Spa Land(₩25–35k / 4小时):</b>22个温泉浴池、13个主题桑拿房(盐房、黄土球房、冰房)、午睡区、小吃吧。请网上预订——周末经常爆满。</li><li><b>孩子:</b>温泉有家庭混浴时段(穿泳衣)——看现场公告;游戏角也能拴住大孩子。</li><li><b>妈妈们:</b>面朝城市的露天足浴庭园,泡着温泉水。就是此刻了。</li><li><b>想逛街的人:</b>楼上的Centum City——韩国美妆、儿童楼层、冬季美食广场。</li><li>2号线到Centum City站(센텀시티)10号出口——进商场之前根本吹不到冷风。</li></ul>`,
+"d3.s4.dur":"· 就近晚餐","d3.s4.name":"Centum 轻松晚餐",
+"d3.s4.body":`<p>不用再赶路——就地解决:</p><ul><li>新世界地下一层美食广场——韩式家常菜档口,快而暖。</li><li>或者餐厅楼层:参鸡汤(samgyetang)是冬季的正确答案。</li><li>乘2号线12分钟回海云台;早点休息。</li></ul>`,
+"d4.num":"第四天","d4.date":"周一 · 12月21日",
+"d4.name":"山间古寺、城墙堡垒、空中胶囊列车",
+"d4.sub":"登上釜山的圣山,看一座1300年历史的古寺和冬日山景,傍晚回到海边坐日落空中列车。孩子的冒险日,全家人的清肺日。",
+"d4.tags":`<span class="tag kid">空中胶囊</span><span class="tag mums">寺庙拍照</span><span class="tag">步行量适中</span>`,
+"d4.s1.dur":"· 交通+登山","d4.s1.name":"前往梵鱼寺",
+"d4.s1.body":`<p>釜山的第一名山寺,始建于公元678年——石门、灯笼装点的院落,春天山谷里野紫藤盛开。到了12月,海拔高处的红枫有时还能挂住最后几抹。</p><ul><li>1号线到梵鱼寺站(범어사)5号出口→乘免费寺方接驳车(班次频繁),或沿商店街步行上山15分钟。</li><li>在山坡小店买份药果(yakgwa,蜂蜜油糕)——山寺名产,孩子认证。</li></ul>`,
+"d4.s2.dur":"· 约1小时45分","d4.s2.name":"古寺 &amp; 城门",
+"d4.s2.body":`<p>慢慢逛寺庙:一柱门、三层石塔,还有正殿——能看到僧人们诵经。寺后一条林间小径通往<b>金井山城</b>,韩国最大的山城城墙——即使只走到第一道城门(北门,约25分钟上坡)也值得。</p><ul><li>孩子的补给:寺里的<b>寺庙饮食咖啡馆</b>有简单的套餐(周末建议预约)。</li><li>800米的城墙环线只适合体力好的徒步者——带孩子的话,走到城门就折返。</li><li>缆车选项:从金刚公园(금강공원)乘缆车登顶山脊(往返约₩12k)——天气好时冬日山景非常壮观。</li></ul>`,
+"d4.s3.dur":"· 午餐","d4.s3.name":"山间午餐",
+"d4.s3.body":`<p>下山在梵鱼寺餐厅街解决午餐——点一份本地寺庙饮食套餐,或一锅咕嘟作响的<b>白切鸡汤(baeksuk)</b>,驱走山上的寒气。</p><ul><li>多数店家人均₩12–18k;鸡汤类一锅够2–3人。</li><li>有素食寺庙套餐——适合女士们。</li></ul>`,
+"d4.s4.dur":"· 需提前预订","d4.s4.name":"海云台Blueline Park——空中胶囊列车",
+"d4.s4.body":`<p>全程最吸引孩子的项目:一节节粉彩小车厢沿着架高7–10米的轨道沿海岸爬行,从尾浦到青沙浦——一侧是大海,一侧是悬崖和咖啡馆。冬天选黄昏班次,正好追上水面上的日落。</p><ul><li><b>提前1–2周网上预订</b>(bluelinepark.com或Klook)——12月的日落班次很快售罄。每节车厢₩35–50k(坐4人)。</li><li>尾浦站:2号线冬柏站1号出口,或从海云台沿海岸步行约20分钟。</li><li>单程约30分钟;建议15:30左右出发,到青沙浦喝杯热巧克力,再坐海边列车回来(₩7k)——或者两程都坐胶囊。</li><li>青沙浦小贴士:灯塔会在你抵达时刚好亮起——人人都会拍的那张照片。</li></ul>`,
+"d4.s5.dur":"· 晚餐","d4.s5.name":"海云台市场街晚餐",
+"d4.s5.body":`<p>简单、热乎、离床近——传统市场的美食胡同用本地价格做经典味道。</p><ul><li>点单:<b>猪肉汤饭(dwaeji gukbap)</b>——釜山招牌;谁还饿就再加一份共享的煎饼(jeon)。</li><li>顺手买好明天的水果和零食——明天是乐园日。</li></ul>`,
+
+"d5.num":"第五天","d5.date":"周二 · 12月22日",
+"d5.name":"乐天世界全天玩透,圣诞灯海收尾",
+"d5.sub":"一座几乎全室内的主题乐园,就是为这种天气造的;玩到晚上,海云台海滩的节日灯海正好点亮。孩子的一天——说实话,也是大人的一天。",
+"d5.tags":`<span class="tag kid">主题乐园</span><span class="tag">室内=暖和</span><span class="tag food">夜市</span>`,
+"d5.s1.dur":"· 交通","d5.s1.name":"前往机张奥斯里亚",
+"d5.s1.body":`<p>2号线到苌山站(장산)6号出口,再打车约10分钟(₩8k)或乘接驳车到乐园入口。早点出门——开门前就到门口排队。</p>`,
+"d5.s2.dur":"· 全天","d5.s2.name":"釜山乐天世界冒险乐园",
+"d5.s2.body":`<p>首尔乐天世界的弟弟,专为室内而建——大型游乐设施、巡游、一整个儿童区都在同一个巨大屋顶下。12月意味着到处是圣诞装饰,天气几乎不会影响任何项目。</p><ul><li><b>门票:</b>出发前网上买(Klook/官网)——通常比门口便宜20–30%(成人约₩55–65k,儿童有优惠;留意家庭套票)。</li><li><b>策略:</b>开门先冲大项目(Giant Digger、Giant Splash的队伍涨得飞快),人多了再去儿童区。</li><li>午餐在园内解决——美食广场水准不差,价格也算厚道。</li><li>外套寄存在入口储物柜;不然你会热到冒汗。</li><li>中午/下午有巡游——看入口处的公告牌。</li></ul>`,
+"d5.s3.dur":"· 回到海云台","d5.s3.name":"海云台圣诞灯光节",
+"d5.s3.body":`<p>每年12月,海滨步道变成灯光隧道和装置艺术展——圣诞树、广场上的巨型圣诞树、沙滩上的灯光艺术。一般从12月初持续到1月底,约17:30日落时分点亮。</p><ul><li>免费、步行可达、离酒店5分钟——低强度夜晚的绝配。</li><li>工作日的晚上比周末清净得多。</li></ul><p class="note">灯光节日期每年秋天公布——出发前确认2026年的安排。</p>`,
+"d5.s4.dur":"· 晚餐","d5.s4.name":"在釜山的最后一顿大餐",
+"d5.s4.body":`<p>最后一晚的选择,都在海云台网格之内:</p><ul><li><b>韩式烤肉之夜:</b>烤韩牛(hanwoo)——庆祝的点单方式。含烧酒人均约₩35k。</li><li><b>舒服选项:</b>雪浓汤(牛骨汤)——温和暖胃,旅行日前夜的完美选择。</li><li><b>妈妈们干一杯:</b>酒店酒吧或海云台的精酿啤酒吧来一杯收官酒——实至名归。</li></ul>`,
+
+"d6.num":"第六天","d6.date":"周三 · 12月23日",
+"d6.name":"慢早晨、最后一杯海边咖啡、回家",
+"d6.sub":"不设闹钟。最后看一眼大海,装好手信,从容不迫地直奔机场。",
+"d6.tags":`<span class="tag">返程日</span><span class="tag food">买手信</span>`,
+"d6.s1.dur":"· 咖啡+收拾行李","d6.s1.name":"最后一眼海景 &amp; 退房",
+"d6.s1.body":`<p>在海滨咖啡馆喝一杯,看晨跑的人经过——这是你第一天看到的那个景色的安静版本。上午晚些时候退房;大多数酒店可免费寄存行李。</p>`,
+"d6.s2.dur":"· 手信速买","d6.s2.name":"带什么回家",
+"d6.s2.body":`<p>一次高效的扫荡,都在酒店附近:</p><ul><li><b>海云台传统市场:</b>新鲜鱼糕(eomuk,真空包装可上飞机)、芝麻油、紫菜。</li><li><b>便利店:</b>给飞机上囤几个三角饭团;蜂蜜黄油杏仁;可爱的袜子(一定会买的)。</li><li><b>美妆补货</b>——如果Centum City那天还没买够,街角的Olive Young再扫一圈。</li><li>超过100ml的液体放托运行李——鱼糕包装两种都行。</li></ul>`,
+"d6.s3.time":"航班 – 提前3小时","d6.s3.name":"前往金海机场 &amp; 返程",
+"d6.s3.body":`<ul><li><b>地铁:</b>海云台→沙上(约50分钟)→金海轻轨到机场(约15分钟)。带行李请预留90分钟门到航站楼。</li><li><b>出租车:</b>约40分钟,₩35–45k——带着行李和孩子,最省心的告别方式。</li><li>保留单笔₩30k以上小票的,可在退税柜台(Global Blue / Global Tax Free)办理退税。</li><li>机场不大:提前1.5–2小时到达足够从容。</li></ul>`,
+
+"e.label":"实用备忘","e.title":"出发前必读",
+"e1.h":`<span>01</span>十二月天气`,
+"e1.p":`<b>2–9°C</b>,沿海干燥多风。日落约17:15,所以户外活动尽量安排在白天。请带上羽绒服、帽子、手套和一把折叠伞;暖宝宝(핫팩)在任何便利店和Daiso都能买到,约₩1,000一片。`,
+"e2.h":`<span>02</span>市内交通`,
+"e2.p":`这份行程全靠釜山地铁就能走。<b>T-money</b>卡(卡费₩4,000+充值)地铁、公交、出租车通用。出租车起步价约₩4,800,市内移动很便宜。导航请用<b>Naver Map</b>或<b>KakaoMap</b>——Google Maps在韩国的公共交通导航不好用。`,
+"e3.h":`<span>03</span>支付与现金`,
+"e3.p":`几乎处处可刷卡;市场摊位和小餐馆偏好现金。便利店有支持国际卡的ATM。街头小吃₩2–8k,正餐₩12–25k/人,螃蟹大餐₩30–40k/人。`,
+"e4.h":`<span>04</span>网络通讯`,
+"e4.p":`预付费旅游SIM卡或eSIM(5天约₩20k,KT/SKT)——可在金海机场到达厅领取,或出发前装好eSIM。酒店和咖啡馆到处有Wi-Fi,但出门导航还是需要移动数据。`,
+"e5.h":`<span>05</span>入境与求助`,
+"e5.p":`<b>K-ETA</b>为免签旅客必填(至少提前72小时申请;政策可能变化,预订前再核一次)。旅游热线<b>1330</b>(24小时,多语种)。紧急电话:112报警 / 119火警急救。`,
+"e6.h":`<span>06</span>预订清单`,
+"e6.p":`出发前预订:<b>空中胶囊</b>(bluelinepark.com——日落班次)、<b>Spa Land</b>、<b>乐天世界门票</b>(Klook通常最便宜),以及周末的螃蟹餐座位。其他一切到现场再说。`,
+"c1":`<b>机票 &amp; 酒店</b>——5晚,一间家庭房+加床或家庭双床,海云台,地铁2号线沿线。`,
+"c2":`<b>K-ETA 审批 ×4</b>——所有人的护照有效期需6个月以上。<span class="mono">出发前≥72小时</span>`,
+"c3":`<b>空中胶囊</b>——预订约15:30尾浦→青沙浦日落班次。<span class="mono">提前1–2周</span>`,
+"c4":`<b>Spa Land</b>——周日下午场×4。<span class="mono">网上预订,周末常满</span>`,
+"c5":`<b>乐天世界门票</b>——12月22日(周二)。<span class="mono">网上购=立省20–30%</span>`,
+"c6":`<b>核实季节性活动</b>——广安里无人机秀(周六)、海云台灯光节、景点开放时间。<span class="mono">出行当周核实</span>`,
+"f.big":"釜山,再见",
+"f.p":"2026年12月18–23日 · 海云台大本营 · 4位旅客",
+"r1":"周五 18","r2":"周六 19","r3":"周日 20","r4":"周一 21","r5":"周二 22","r6":"周三 23",
+}
+};
+
+/* Titles per language */
+var TITLES = {
+  en:"BUSAN · 6 Days · 18–23 Dec 2026",
+  fr:"BUSAN · 6 jours · 18–23 déc. 2026",
+  zh:"釜山 · 6天 · 2026年12月18–23日"
+};
+
+/* English source is captured from the initial HTML */
+var EN = {};
+document.querySelectorAll('[data-i18n]').forEach(function(el){
+  EN[el.getAttribute('data-i18n')] = el.innerHTML;
+});
+
+var LANG_KEY = 'busan-lang';
+function setLang(lang){
+  var dict = lang === 'en' ? EN : T[lang];
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var v = dict[el.getAttribute('data-i18n')];
+    if(v != null) el.innerHTML = v;
+  });
+  document.documentElement.setAttribute('lang', lang);
+  document.title = TITLES[lang] || TITLES.en;
+  document.querySelectorAll('.langbar button').forEach(function(b){
+    b.classList.toggle('on', b.dataset.lang === lang);
+  });
+  try{ localStorage.setItem(LANG_KEY, lang); }catch(e){}
+  /* re-measure timelines and re-close accordions, since content height changed */
+  document.querySelectorAll('.slot.open').forEach(function(s){
+    s.classList.remove('open');
+    s.querySelector('.slot-head').setAttribute('aria-expanded','false');
+    s.querySelector('.slot-body').style.maxHeight = '0px';
+  });
+  if(window.__tlResize) window.__tlResize();
+  window.scrollBy(0,0);
+}
+document.querySelectorAll('.langbar button').forEach(function(b){
+  b.addEventListener('click', function(){ setLang(b.dataset.lang); });
+});
+
+/* initial language: saved choice > browser language > English */
+(function(){
+  var saved = null;
+  try{ saved = localStorage.getItem(LANG_KEY); }catch(e){}
+  var nav = (navigator.language || 'en').slice(0,2).toLowerCase();
+  var start = saved || (nav === 'fr' ? 'fr' : nav === 'zh' ? 'zh' : 'en');
+  if(start !== 'en') setLang(start);
+})();
+
+/* ================================================================
+   INTERACTIONS
+   ================================================================ */
 (function(){
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---- Accordion slots: + rotates to x, height animates ---- */
   document.querySelectorAll('.slot').forEach(function(slot){
     var head = slot.querySelector('.slot-head');
     var body = slot.querySelector('.slot-body');
@@ -938,14 +1231,11 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
     });
   });
 
-  /* ---- Timeline: line draws on scroll, dot follows path ---- */
   var tls = [].slice.call(document.querySelectorAll('.tl'));
-  tls.forEach(function(tl){
-    var svg = tl.querySelector('.tl-svg');
-    var path = svg.querySelector('path');
-    var dot = tl.querySelector('.tl-dot');
-    // sync svg pixel height to the list, vertical path from 0 to height
-    function size(){
+  function sizeAll(){
+    tls.forEach(function(tl){
+      var svg = tl.querySelector('.tl-svg');
+      var path = svg.querySelector('path');
       var h = tl.offsetHeight;
       svg.setAttribute('viewBox', '0 0 4 ' + h);
       svg.style.height = h + 'px';
@@ -953,10 +1243,20 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
       var len = path.getTotalLength();
       path.dataset.len = len;
       path.style.strokeDasharray = len;
-    }
-    size();
-    window.addEventListener('resize', function(){ size(); if(reduced) draw(1); });
+    });
+  }
+  sizeAll();
+  window.__tlResize = function(){
+    sizeAll();
+    tls.forEach(function(tl){ tl.__draw ? tl.__draw(tl.__p || 0) : null; });
+  };
+  window.addEventListener('resize', function(){ window.__tlResize(); });
+
+  tls.forEach(function(tl){
+    var path = tl.querySelector('.tl-svg path');
+    var dot = tl.querySelector('.tl-dot');
     function draw(p){
+      tl.__p = p;
       var len = parseFloat(path.dataset.len) || 0;
       path.style.strokeDashoffset = len * (1 - p);
       if(len && p > 0){
@@ -967,6 +1267,7 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
         dot.style.opacity = 0;
       }
     }
+    tl.__draw = draw;
     if(reduced){ draw(1); return; }
     var ticking = false;
     function onScroll(){
@@ -976,18 +1277,15 @@ footer p{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--
         ticking = false;
         var r = tl.getBoundingClientRect();
         var vh = window.innerHeight;
-        // progress: 0 when section top hits 75% of viewport, 1 when its bottom reaches 35%
         var start = vh * 0.75, end = vh * 0.35;
         var p = (start - r.top) / (r.height + start - end);
-        p = Math.max(0, Math.min(1, p));
-        draw(p);
+        draw(Math.max(0, Math.min(1, p)));
       });
     }
     window.addEventListener('scroll', onScroll, {passive:true});
     onScroll();
   });
 
-  /* ---- Day rail: highlight current day via IntersectionObserver ---- */
   var links = {};
   document.querySelectorAll('.rail a').forEach(function(a){ links[a.dataset.day] = a; });
   var current = null;
